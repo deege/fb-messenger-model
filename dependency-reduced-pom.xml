@@ -4,7 +4,7 @@
   <groupId>com.deegeu.facebook.messenger.model</groupId>
   <artifactId>fb-messenger-model</artifactId>
   <name>fb-messenger-model</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>${project.version}.${build.number}</version>
   <url>http://www.deege.com</url>
   <developers>
     <developer>
