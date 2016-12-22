@@ -33,7 +33,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class AccountLinking {
+final public class AccountLinking {
     @SerializedName("status")
     @Expose
     private String status;

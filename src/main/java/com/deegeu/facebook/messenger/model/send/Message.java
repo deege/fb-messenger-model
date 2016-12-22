@@ -29,12 +29,60 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Message {
+final public class Message {
 
     @SerializedName("attachment")
     @Expose
     private Attachment attachment;
+    
+    @SerializedName("text")
+    @Expose
+    private String text;
 
+    @SerializedName("quick_reply")
+    @Expose
+    private String quickReply;
+    
+    @SerializedName("is_echo")
+    @Expose
+    private Boolean isEcho;
+      
+    @SerializedName("metadata")
+    @Expose
+    private String metadata;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getQuickReply() {
+        return quickReply;
+    }
+
+    public void setQuickReply(String quickReply) {
+        this.quickReply = quickReply;
+    }
+
+    public Boolean getIsEcho() {
+        return isEcho;
+    }
+
+    public void setIsEcho(Boolean isEcho) {
+        this.isEcho = isEcho;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
+    }
+   
     /**
      * 
      * @return

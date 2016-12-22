@@ -30,7 +30,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Payload {
+final public class Payload {
 
     @SerializedName("template_type")
     @Expose
@@ -123,7 +123,26 @@ public class Payload {
     @SerializedName("update_flight_info")
     @Expose
     private UpdateFlightInfo updateFlightInfo;
+    
+    @SerializedName("top_element_style")
+    @Expose
+    private String topElementStyle;
 
+    public String getUpdateType() {
+        return updateType;
+    }
+
+    public void setUpdateType(String updateType) {
+        this.updateType = updateType;
+    }
+
+    public UpdateFlightInfo getUpdateFlightInfo() {
+        return updateFlightInfo;
+    }
+
+    public void setUpdateFlightInfo(UpdateFlightInfo updateFlightInfo) {
+        this.updateFlightInfo = updateFlightInfo;
+    }
 
     public String getIntroMessage() {
         return introMessage;
@@ -293,8 +312,13 @@ public class Payload {
         this.adjustments = adjustments;
     }
 
-    
-    
+    public String getTopElementStyle() {
+        return topElementStyle;
+    }
+
+    public void setTopElementStyle(String topElementStyle) {
+        this.topElementStyle = topElementStyle;
+    }
     
     /**
      * 
@@ -401,6 +425,7 @@ public class Payload {
                 .append(basePrice)
                 .append(tax)
                 .append(totalPrice)
+                .append(topElementStyle)
                 .append(updateType)
                 .append(updateFlightInfo)
                 .toHashCode();
@@ -440,6 +465,7 @@ public class Payload {
                 .append(priceInfo, rhs.priceInfo)
                 .append(basePrice, rhs.basePrice)
                 .append(tax, rhs.tax)
+                .append(topElementStyle, this.topElementStyle)
                 .append(totalPrice, rhs.totalPrice) 
                 .append(updateType, rhs.updateType)
                 .append(updateFlightInfo, rhs.updateFlightInfo)

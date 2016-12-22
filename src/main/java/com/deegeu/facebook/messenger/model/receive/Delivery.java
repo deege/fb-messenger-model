@@ -34,7 +34,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class Delivery {
+final public class Delivery {
 
     @SerializedName("mids")
     @Expose

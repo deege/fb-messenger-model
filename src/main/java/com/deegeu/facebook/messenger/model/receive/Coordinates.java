@@ -33,7 +33,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class Coordinates {
+final public class Coordinates {
     @SerializedName("lat")
     @Expose
     private Double lat;

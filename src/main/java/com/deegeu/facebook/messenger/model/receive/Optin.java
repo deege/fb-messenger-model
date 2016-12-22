@@ -33,7 +33,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class Optin {
+final public class Optin {
     
     
     @SerializedName("ref")

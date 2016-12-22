@@ -30,7 +30,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class BoardingPass {
+final public class BoardingPass {
 
     @SerializedName("passenger_name")
     @Expose
@@ -65,7 +65,18 @@ public class BoardingPass {
     @SerializedName("flight_info")
     @Expose
     private FlightInfo flightInfo;
+    @SerializedName("barcode_image_url")
+    @Expose
+    private String barcodeImageUrl;
 
+    public void setBarcodeImageUrl(String barcodeImageUrl) {
+        this.barcodeImageUrl = barcodeImageUrl;
+    }
+
+    public String getBarcodeImageUrl() {
+        return barcodeImageUrl;
+    }
+    
     /**
      * 
      * @return
@@ -283,6 +294,7 @@ public class BoardingPass {
                 .append(qrCode)
                 .append(aboveBarCodeImageUrl)
                 .append(flightInfo)
+                .append(barcodeImageUrl)
                 .toHashCode();
     }
 
@@ -307,6 +319,7 @@ public class BoardingPass {
                 .append(qrCode, rhs.qrCode)
                 .append(aboveBarCodeImageUrl, rhs.aboveBarCodeImageUrl)
                 .append(flightInfo, rhs.flightInfo)
+                .append(barcodeImageUrl, rhs.barcodeImageUrl)
                 .isEquals();
     }
 

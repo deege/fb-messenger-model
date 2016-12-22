@@ -33,7 +33,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class Attachment {
+final public class Attachment {
     @SerializedName("type")
     @Expose
     private String type;

@@ -33,7 +33,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class MessageRequest {
+final public class MessageRequest {
     @SerializedName("recipient")
     @Expose
     private Recipient recipient;
