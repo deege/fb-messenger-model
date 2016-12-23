@@ -78,7 +78,9 @@ final public class MessageRequestBuilder {
         
         request.setMessage(this.message);
         request.setRecipient(this.recipient);
-        request.setSenderAction(this.senderAction.action());
+        if (this.senderAction != null) {
+            request.setSenderAction(this.senderAction.action());
+        }
         
         return request;
     }
