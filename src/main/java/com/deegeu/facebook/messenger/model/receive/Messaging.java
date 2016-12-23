@@ -63,6 +63,38 @@ final public class Messaging {
     @Expose
     private Postback postback;
 
+    public ReadReceipt getReadReceipt() {
+        return readReceipt;
+    }
+
+    public void setReadReceipt(ReadReceipt readReceipt) {
+        this.readReceipt = readReceipt;
+    }
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
+
+    public Optin getOptin() {
+        return optin;
+    }
+
+    public void setOptin(Optin optin) {
+        this.optin = optin;
+    }
+
+    public Postback getPostback() {
+        return postback;
+    }
+
+    public void setPostback(Postback postback) {
+        this.postback = postback;
+    }
+    
     /**
      * 
      * @return 
