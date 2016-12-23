@@ -29,7 +29,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SecondaryField {
+final public class SecondaryField {
 
     @SerializedName("label")
     @Expose

@@ -29,7 +29,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Button {
+final public class Button {
 
     @SerializedName("type")
     @Expose
@@ -47,6 +47,10 @@ public class Button {
     @Expose
     private String payload;
     
+    @SerializedName("payment_summary")
+    @Expose
+    private PaymentSummary paymentSummary;
+    
     @SerializedName("messenger_extensions")
     @Expose
     private boolean messengerExtensions;
@@ -59,6 +63,38 @@ public class Button {
     @Expose
     private String fallbackUrl;
 
+    public boolean isMessengerExtensions() {
+        return messengerExtensions;
+    }
+
+    public void setMessengerExtensions(boolean messengerExtensions) {
+        this.messengerExtensions = messengerExtensions;
+    }
+
+    public String getWebviewHeightRatio() {
+        return webviewHeightRatio;
+    }
+
+    public void setWebviewHeightRatio(String webviewHeightRatio) {
+        this.webviewHeightRatio = webviewHeightRatio;
+    }
+
+    public String getFallbackUrl() {
+        return fallbackUrl;
+    }
+
+    public void setFallbackUrl(String fallbackUrl) {
+        this.fallbackUrl = fallbackUrl;
+    }
+
+    public PaymentSummary getPaymentSummary() {
+        return paymentSummary;
+    }
+
+    public void setPayloadSummary(PaymentSummary paymentSummary) {
+        this.paymentSummary = paymentSummary;
+    }
+    
     /**
      * 
      * @return
@@ -146,6 +182,7 @@ public class Button {
                 .append(messengerExtensions)
                 .append(webviewHeightRatio)
                 .append(fallbackUrl)
+                .append(paymentSummary)
                 .toHashCode();
     }
 
@@ -166,6 +203,7 @@ public class Button {
                 .append(messengerExtensions, rhs.messengerExtensions)
                 .append(webviewHeightRatio, rhs.webviewHeightRatio)
                 .append(fallbackUrl, rhs.fallbackUrl)
+                .append(paymentSummary, rhs.paymentSummary)
                 .isEquals();
     }
 

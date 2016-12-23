@@ -33,7 +33,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class MessageRequest {
+final public class MessageRequest {
     @SerializedName("recipient")
     @Expose
     private Recipient recipient;
@@ -41,6 +41,18 @@ public class MessageRequest {
     @SerializedName("message")
     @Expose
     private Message message;
+    
+    @SerializedName("sender_action")
+    @Expose
+    private String senderAction;
+
+    public String getSenderAction() {
+        return senderAction;
+    }
+
+    public void setSenderAction(String senderAction) {
+        this.senderAction = senderAction;
+    }
     
     public Recipient getRecipient() {
         return recipient;

@@ -33,7 +33,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
-public class ReadReceipt {
+final public class ReadReceipt {
     @SerializedName("watermark")
     @Expose
     private Long watermark;

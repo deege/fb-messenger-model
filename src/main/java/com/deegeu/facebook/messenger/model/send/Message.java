@@ -25,16 +25,65 @@ package com.deegeu.facebook.messenger.model.send;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Message {
+final public class Message {
 
     @SerializedName("attachment")
     @Expose
     private Attachment attachment;
+    
+    @SerializedName("text")
+    @Expose
+    private String text;
 
+    @SerializedName("quick_replies")
+    @Expose
+    private List<QuickReply> quickReplies = null;
+    
+    @SerializedName("is_echo")
+    @Expose
+    private Boolean isEcho;
+      
+    @SerializedName("metadata")
+    @Expose
+    private String metadata;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public List<QuickReply> getQuickReplies() {
+        return quickReplies;
+    }
+
+    public void setQuickReply(List<QuickReply> quickReplies) {
+        this.quickReplies = quickReplies;
+    }
+
+    public Boolean getIsEcho() {
+        return isEcho;
+    }
+
+    public void setIsEcho(Boolean isEcho) {
+        this.isEcho = isEcho;
+    }
+
+    public String getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(String metadata) {
+        this.metadata = metadata;
+    }
+   
     /**
      * 
      * @return
@@ -61,7 +110,11 @@ public class Message {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(attachment)
+                .append(this.attachment)
+                .append(this.isEcho)
+                .append(this.metadata)
+                .append(this.quickReplies)
+                .append(this.text)
                 .toHashCode();
     }
 
@@ -75,7 +128,11 @@ public class Message {
         }
         Message rhs = ((Message) other);
         return new EqualsBuilder()
-                .append(attachment, rhs.attachment)
+                .append(this.attachment, rhs.attachment)
+                .append(this.isEcho, rhs.isEcho)
+                .append(this.metadata, rhs.metadata)
+                .append(this.quickReplies, rhs.quickReplies)
+                .append(this.text, rhs.text)
                 .isEquals();
     }
 
