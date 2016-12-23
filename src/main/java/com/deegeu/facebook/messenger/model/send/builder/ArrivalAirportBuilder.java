@@ -58,8 +58,19 @@ final public class ArrivalAirportBuilder {
     }
     
     public ArrivalAirport build() {
+        validateArrivalAirport();
+        
         ArrivalAirport arrival = new ArrivalAirport();
 
+        arrival.setAirportCode(airportCode);
+        arrival.setCity(city);
+        arrival.setTerminal(terminal);
+        arrival.setGate(gate);
+        
+        return arrival;
+    }
+
+    private void validateArrivalAirport() throws IllegalArgumentException {
         if (this.airportCode == null) {
             throw new IllegalArgumentException(
                     "ArrivalAirportBuilder 'airportCode' cannot be null.");
@@ -68,13 +79,6 @@ final public class ArrivalAirportBuilder {
             throw new IllegalArgumentException(
                     "ArrivalAirportBuilder 'city' cannot be null.");
         }
-        
-        arrival.setAirportCode(airportCode);
-        arrival.setCity(city);
-        arrival.setTerminal(terminal);
-        arrival.setGate(gate);
-        
-        return arrival;
     }
 
     @Override

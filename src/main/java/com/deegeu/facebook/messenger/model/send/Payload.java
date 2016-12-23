@@ -127,7 +127,19 @@ final public class Payload {
     @SerializedName("top_element_style")
     @Expose
     private String topElementStyle;
+    
+    @SerializedName("url")
+    @Expose
+    private String url;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    
     public String getUpdateType() {
         return updateType;
     }

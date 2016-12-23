@@ -26,6 +26,7 @@ package com.deegeu.facebook.messenger.model.send.builder;
 import com.deegeu.facebook.messenger.model.send.Button;
 import com.deegeu.facebook.messenger.model.send.DefaultAction;
 import com.deegeu.facebook.messenger.model.send.Element;
+import java.net.URL;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -36,19 +37,19 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 final public class ElementBuilder {
     private String title;
 
-    private String itemUrl;
+    private URL itemUrl;
 
-    private String imageUrl;
+    private URL imageUrl;
 
     private String subtitle;
 
-    private DefaultAction defaultAction;
+    private Double price;
 
     private List<Button> buttons = null;
 
-    private long quantity;
-
-    private long price;
+    private DefaultAction defaultAction;
+    
+    private Long quantity;
 
     private String currency;
     
@@ -59,12 +60,12 @@ final public class ElementBuilder {
         return this;
     }
 
-    public ElementBuilder itemUrl(String itemUrl) {
+    public ElementBuilder itemUrl(URL itemUrl) {
         this.itemUrl = itemUrl;
         return this;
     }
 
-    public ElementBuilder imageUrl(String imageUrl) {
+    public ElementBuilder imageUrl(URL imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -89,7 +90,7 @@ final public class ElementBuilder {
         return this;
     }
 
-    public ElementBuilder price(long price) {
+    public ElementBuilder price(Double price) {
         this.price = price;
         return this;
     }
@@ -100,13 +101,25 @@ final public class ElementBuilder {
     }
     
     public Element build() {
+        if (this.price == null) {
+            this.price = 0.0d;
+        }
+        
         Element element = new Element();
         
         element.setButtons(buttons);
-        element.setImageUrl(imageUrl);
-        element.setItemUrl(itemUrl);
+        if (imageUrl != null) {
+            element.setImageUrl(imageUrl.toString());
+        }
+        if (itemUrl != null) {
+            element.setItemUrl(itemUrl.toString());
+        }
         element.setSubtitle(subtitle);
         element.setTitle(title);
+        
+        element.setDefaultAction(defaultAction);
+        element.setQuantity(quantity);
+        element.setCurrency(currency);
         
         return element;
     }

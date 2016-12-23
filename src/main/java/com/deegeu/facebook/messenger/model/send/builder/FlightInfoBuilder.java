@@ -94,6 +94,8 @@ final public class FlightInfoBuilder {
     }
     
     public FlightInfo build() {
+        validateFlightInfo();
+        
         FlightInfo flightInfo = new FlightInfo();
         
         flightInfo.setAircraftType(aircraftType);
@@ -106,6 +108,37 @@ final public class FlightInfoBuilder {
         flightInfo.setTravelClass(travelClass);
         
         return flightInfo;
+    }
+
+    private void validateFlightInfo() throws IllegalArgumentException {
+        if (this.arrivalAirport == null) {
+            throw new IllegalArgumentException(
+                    "FlightInfoBuilder 'arrivalAirport' cannot be null.");
+        }
+        if (this.connectionId == null) {
+            throw new IllegalArgumentException(
+                    "FlightInfoBuilder 'connectionId' cannot be null.");
+        }
+        if (this.departureAirport == null) {
+            throw new IllegalArgumentException(
+                    "FlightInfoBuilder 'departureAirport' cannot be null.");
+        }
+        if (this.flightNumber == null) {
+            throw new IllegalArgumentException(
+                    "FlightInfoBuilder 'flightNumber' cannot be null.");
+        }
+        if (this.flightSchedule == null) {
+            throw new IllegalArgumentException(
+                    "FlightInfoBuilder 'flightSchedule' cannot be null.");
+        }
+        if (this.segmentId == null) {
+            throw new IllegalArgumentException(
+                    "FlightInfoBuilder 'segmentId' cannot be null.");
+        }
+        if (this.travelClass == null) {
+            throw new IllegalArgumentException(
+                    "FlightInfoBuilder 'travelClass' cannot be null.");
+        }
     }
 
     @Override

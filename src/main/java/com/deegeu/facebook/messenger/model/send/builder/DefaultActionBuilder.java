@@ -24,6 +24,7 @@
 package com.deegeu.facebook.messenger.model.send.builder;
 
 import com.deegeu.facebook.messenger.model.send.DefaultAction;
+import java.net.URL;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -34,13 +35,13 @@ final public class DefaultActionBuilder {
 
     private String type;
 
-    private String url;
+    private URL url;
 
     private boolean messengerExtensions;
 
     private String webviewHeightRatio;
 
-    private String fallbackUrl;
+    private URL fallbackUrl;
 
     public DefaultActionBuilder() { }
     
@@ -49,7 +50,7 @@ final public class DefaultActionBuilder {
         return this;
     }
 
-    public DefaultActionBuilder url(String url) {
+    public DefaultActionBuilder url(URL url) {
         this.url = url;
         return this;
     }
@@ -64,7 +65,7 @@ final public class DefaultActionBuilder {
         return this;
     }
 
-    public DefaultActionBuilder fallbackUrl(String fallbackUrl) {
+    public DefaultActionBuilder fallbackUrl(URL fallbackUrl) {
         this.fallbackUrl = fallbackUrl;
         return this;
     }
@@ -72,16 +73,19 @@ final public class DefaultActionBuilder {
     public DefaultAction build() {
         DefaultAction action = new DefaultAction();
         
-        action.setFallbackUrl(fallbackUrl);
+        if (this.fallbackUrl != null) {
+            action.setFallbackUrl(fallbackUrl.toString());
+        }
         action.setMessengerExtensions(messengerExtensions);
         action.setType(type);
-        action.setUrl(url);
+        if (this.url != null) {
+            action.setUrl(url.toString());
+        }
         action.setWebviewHeightRatio(webviewHeightRatio);
         
         return action;
     }
-    
-    
+      
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

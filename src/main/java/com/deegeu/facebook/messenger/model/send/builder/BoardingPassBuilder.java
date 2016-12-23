@@ -9,6 +9,7 @@ import com.deegeu.facebook.messenger.model.send.AuxiliaryField;
 import com.deegeu.facebook.messenger.model.send.BoardingPass;
 import com.deegeu.facebook.messenger.model.send.FlightInfo;
 import com.deegeu.facebook.messenger.model.send.SecondaryField;
+import java.net.URL;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -30,21 +31,21 @@ final public class BoardingPassBuilder {
 
     private List<SecondaryField> secondaryFields = null;
 
-    private String logoImageUrl;
+    private URL logoImageUrl;
 
-    private String headerImageUrl;
+    private URL headerImageUrl;
 
     private String qrCode;
 
-    private String aboveBarCodeImageUrl;
+    private URL aboveBarCodeImageUrl;
 
     private FlightInfo flightInfo;
     
-    private String barcodeImageUrl;
+    private URL barcodeImageUrl;
     
     public BoardingPassBuilder() { }
 
-    public BoardingPassBuilder barcodeImageUrl(String barcodeImageUrl) {
+    public BoardingPassBuilder barcodeImageUrl(URL barcodeImageUrl) {
         this.barcodeImageUrl = barcodeImageUrl;
         return this;
     }
@@ -79,12 +80,12 @@ final public class BoardingPassBuilder {
         return this;
     }
 
-    public BoardingPassBuilder logoImageUrl(String logoImageUrl) {
+    public BoardingPassBuilder logoImageUrl(URL logoImageUrl) {
         this.logoImageUrl = logoImageUrl;
         return this;
     }
 
-    public BoardingPassBuilder headerImageUrl(String headerImageUrl) {
+    public BoardingPassBuilder headerImageUrl(URL headerImageUrl) {
         this.headerImageUrl = headerImageUrl;
         return this;
     }
@@ -94,7 +95,7 @@ final public class BoardingPassBuilder {
         return this;
     }
 
-    public BoardingPassBuilder aboveBarCodeImageUrl(String aboveBarCodeImageUrl) {
+    public BoardingPassBuilder aboveBarCodeImageUrl(URL aboveBarCodeImageUrl) {
         this.aboveBarCodeImageUrl = aboveBarCodeImageUrl;
         return this;
     }
@@ -105,8 +106,34 @@ final public class BoardingPassBuilder {
     }
     
     public BoardingPass build() {
+        validateBoardingPass();
+        
         BoardingPass pass = new BoardingPass();
         
+        if (this.aboveBarCodeImageUrl != null) {
+            pass.setAboveBarCodeImageUrl(this.aboveBarCodeImageUrl.toString());
+        }
+        pass.setAuxiliaryFields(this.auxiliaryFields);
+        pass.setFlightInfo(this.flightInfo);
+        if (this.headerImageUrl != null) {
+            pass.setHeaderImageUrl(this.headerImageUrl.toString());
+        }
+        if (this.logoImageUrl != null) {
+            pass.setLogoImageUrl(this.logoImageUrl.toString());
+        }
+        pass.setPassengerName(this.passengerName);
+        pass.setPnrNumber(this.pnrNumber);
+        pass.setQrCode(this.qrCode);
+        pass.setSeat(this.seat);
+        pass.setSecondaryFields(this.secondaryFields);
+        pass.setTravelClass(this.travelClass);
+        if (this.barcodeImageUrl != null) {
+            pass.setBarcodeImageUrl(this.barcodeImageUrl.toString());
+        }
+        return pass;
+    }
+
+    private void validateBoardingPass() throws IllegalArgumentException {
         if (this.passengerName == null) {
             throw new IllegalArgumentException(
                     "BoardingPassBuilder 'passenger_name' cannot be null.");
@@ -131,20 +158,6 @@ final public class BoardingPassBuilder {
             throw new IllegalArgumentException(
                     "BoardingPassBuilder Either 'qr_code' or 'barcode_image_url' must be non null.");
         }
-        
-        pass.setAboveBarCodeImageUrl(aboveBarCodeImageUrl);
-        pass.setAuxiliaryFields(auxiliaryFields);
-        pass.setFlightInfo(flightInfo);
-        pass.setHeaderImageUrl(headerImageUrl);
-        pass.setLogoImageUrl(logoImageUrl);
-        pass.setPassengerName(passengerName);
-        pass.setPnrNumber(pnrNumber);
-        pass.setQrCode(qrCode);
-        pass.setSeat(seat);
-        pass.setSecondaryFields(secondaryFields);
-        pass.setTravelClass(travelClass);
-        pass.setBarcodeImageUrl(barcodeImageUrl);
-        return pass;
     }
 
     @Override

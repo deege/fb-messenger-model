@@ -76,8 +76,21 @@ final public class AddressBuilder {
     }
     
     public Address build() {
-        Address address = new Address();
+        validateAddress();
         
+        Address address = new Address();
+       
+        address.setCity(city);
+        address.setCountry(country);
+        address.setPostalCode(postalCode);
+        address.setState(state);
+        address.setStreet1(street1);
+        address.setStreet2(street2);
+        
+        return address;
+    }
+
+    private void validateAddress() throws IllegalArgumentException {
         if (this.street1 == null) {
             throw new IllegalArgumentException(
                     "AddressBuilder 'street_1' cannot be null.");
@@ -98,15 +111,6 @@ final public class AddressBuilder {
             throw new IllegalArgumentException(
                     "AddressBuilder 'country' cannot be null.");
         }
-        
-        address.setCity(city);
-        address.setCountry(country);
-        address.setPostalCode(postalCode);
-        address.setState(state);
-        address.setStreet1(street1);
-        address.setStreet2(street2);
-        
-        return address;
     }
 
     @Override

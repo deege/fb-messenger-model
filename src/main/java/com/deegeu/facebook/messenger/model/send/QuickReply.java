@@ -25,83 +25,63 @@ package com.deegeu.facebook.messenger.model.send;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-final public class Message {
-
-    @SerializedName("attachment")
+/**
+ *
+ * @author dspiess
+ */
+final public class QuickReply {
+    @SerializedName("content_type")
     @Expose
-    private Attachment attachment;
+    private String contentType;
     
-    @SerializedName("text")
+    @SerializedName("title")
     @Expose
-    private String text;
-
-    @SerializedName("quick_replies")
-    @Expose
-    private List<QuickReply> quickReplies = null;
+    private String title;
     
-    @SerializedName("is_echo")
+    @SerializedName("payload")
     @Expose
-    private Boolean isEcho;
-      
-    @SerializedName("metadata")
+    private String payload;
+    
+    @SerializedName("image_url")
     @Expose
-    private String metadata;
+    private String imageUrl;
 
-    public String getText() {
-        return text;
+    public String getContentType() {
+        return contentType;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
-    public List<QuickReply> getQuickReplies() {
-        return quickReplies;
+    public String getTitle() {
+        return title;
     }
 
-    public void setQuickReply(List<QuickReply> quickReplies) {
-        this.quickReplies = quickReplies;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Boolean getIsEcho() {
-        return isEcho;
+    public String getPayload() {
+        return payload;
     }
 
-    public void setIsEcho(Boolean isEcho) {
-        this.isEcho = isEcho;
+    public void setPayload(String payload) {
+        this.payload = payload;
     }
 
-    public String getMetadata() {
-        return metadata;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setMetadata(String metadata) {
-        this.metadata = metadata;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
-   
-    /**
-     * 
-     * @return
-     *     The attachment
-     */
-    public Attachment getAttachment() {
-        return attachment;
-    }
-
-    /**
-     * 
-     * @param attachment
-     *     The attachment
-     */
-    public void setAttachment(Attachment attachment) {
-        this.attachment = attachment;
-    }
-
+    
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -110,11 +90,10 @@ final public class Message {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(this.attachment)
-                .append(this.isEcho)
-                .append(this.metadata)
-                .append(this.quickReplies)
-                .append(this.text)
+                .append(this.payload)
+                .append(this.contentType)
+                .append(this.imageUrl)
+                .append(this.title)
                 .toHashCode();
     }
 
@@ -123,17 +102,16 @@ final public class Message {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Message) == false) {
+        if ((other instanceof QuickReply) == false) {
             return false;
         }
-        Message rhs = ((Message) other);
+        QuickReply rhs = ((QuickReply) other);
         return new EqualsBuilder()
-                .append(this.attachment, rhs.attachment)
-                .append(this.isEcho, rhs.isEcho)
-                .append(this.metadata, rhs.metadata)
-                .append(this.quickReplies, rhs.quickReplies)
-                .append(this.text, rhs.text)
+                .append(this.payload, rhs.payload)
+                .append(this.contentType, rhs.contentType)
+                .append(this.imageUrl, rhs.imageUrl)
+                .append(this.title, rhs.title)
                 .isEquals();
     }
-
+    
 }

@@ -35,6 +35,9 @@ import com.deegeu.facebook.messenger.model.send.Payload;
 import com.deegeu.facebook.messenger.model.send.PriceInfo;
 import com.deegeu.facebook.messenger.model.send.Summary;
 import com.deegeu.facebook.messenger.model.send.UpdateFlightInfo;
+import java.net.URL;
+import java.time.LocalDateTime;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -43,6 +46,28 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @author dspiess
  */
 final public class PayloadBuilder {  
+    
+    public enum TemplateType {
+        AIRLINE_BOARDING_PASS("airline_boardingpass"), 
+        AIRLINE_CHECKIN("airline_checkin"),
+        AIRLINE_ITINERARY("airline_itinerary"),
+        AIRLINE_UPDATE("airline_update"),
+        BUTTON("button"), 
+        GENERIC("generic"),
+        LIST("list"), 
+        RECEIPT("receipt");
+        
+        final private String templateTypeString;
+        
+        TemplateType(String templateTypeString) {
+            this.templateTypeString = templateTypeString;
+        }
+        
+        public String templateType() {
+            return this.templateTypeString;
+        }
+    }
+    
     private static final int MIN_NUM_ELEMENTS_LIST = 2;
     
     private static final int MAX_NUM_ELEMENTS_LIST = 4;
@@ -50,6 +75,8 @@ final public class PayloadBuilder {
     private static final int MAX_NUM_ELEMENTS_GENERIC = 10;
     
     private static final int MAX_NUM_BUTTONS = 3;
+    
+    private static final int MAX_NUM_ELEMENTS_RECEIPT = 100;
     
     private Address address;
     
@@ -61,7 +88,7 @@ final public class PayloadBuilder {
     
     private List<Button> buttons = null;
     
-    private String checkinUrl;
+    private URL checkinUrl;
 
     private String currency;
     
@@ -75,7 +102,7 @@ final public class PayloadBuilder {
 
     private String orderNumber;
     
-    private String orderUrl;
+    private URL orderUrl;
     
     private List<PassengerInfo> passengerInfo = null;
 
@@ -93,11 +120,11 @@ final public class PayloadBuilder {
     
     private String tax;
 
-    private String templateType;
+    private TemplateType templateType;
 
     private String text;
     
-    private String timestamp;
+    private LocalDateTime timestamp;
     
     private String topElementStyle;
     
@@ -106,10 +133,12 @@ final public class PayloadBuilder {
     private String updateType;
 
     private UpdateFlightInfo updateFlightInfo;
+    
+    private URL url;
 
     public PayloadBuilder() { }
     
-    public PayloadBuilder templateType(String templateType) {
+    public PayloadBuilder templateType(TemplateType templateType) {
         this.templateType = templateType;
         return this;
     }
@@ -149,12 +178,12 @@ final public class PayloadBuilder {
         return this;
     }
 
-    public PayloadBuilder orderUrl(String orderUrl) {
+    public PayloadBuilder orderUrl(URL orderUrl) {
         this.orderUrl = orderUrl;
         return this;
     }
 
-    public PayloadBuilder timestamp(String timestamp) {
+    public PayloadBuilder timestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
         return this;
     }
@@ -200,7 +229,7 @@ final public class PayloadBuilder {
         return this;
     }
 
-    public PayloadBuilder checkinUrl(String checkinUrl) {
+    public PayloadBuilder checkinUrl(URL checkinUrl) {
         this.checkinUrl = checkinUrl;
         return this;
     }
@@ -253,61 +282,25 @@ final public class PayloadBuilder {
     public Payload build() {
         Payload payload = new Payload();
         
-        if (this.templateType == null) {
-            throw new IllegalArgumentException(
-                    "PayloadBuilder 'templateType' cannot be null.");
-        }
-        
-        if (this.elements == null) {
-            throw new IllegalArgumentException(
-                    "PayloadBuilder 'elements' cannot be null.");
-        }
-        
-        if ("generic".equalsIgnoreCase(this.templateType)) {
-            validateGenericTemplate();
-        }
-        
-        if ("button".equalsIgnoreCase(this.templateType)) {
-            validateButtonTemplate();
-        }
-        
-        if ("list".equalsIgnoreCase(this.templateType)) {
-            validateListTemplate();
-        }
-        
-        if ("receipt".equalsIgnoreCase(this.templateType)) {
-            validateReceiptTemplate();
-        }
-        
-        if ("airline_boardingpass".equalsIgnoreCase(this.templateType)) {
-            validateBoardingPassTemplate();
-        }
-        
-        if ("airline_checkin".equalsIgnoreCase(this.templateType)) {
-            vaildateAirlineCheckinTemplate(); 
-        }
-        
-        if ("airline_itinerary".equalsIgnoreCase(this.templateType)) {
-            validateAirlineItinerary();
-        }
-        
-        if ("airline_update".equalsIgnoreCase(this.templateType)) {
-            validateAirlineFlightUpdate(); 
-        }
+        validatePayload();
         
         payload.setAddress(address);
         payload.setAdjustments(adjustments);
         payload.setBasePrice(basePrice);
         payload.setBoardingPass(boardingPass);
         payload.setButtons(buttons);
-        payload.setCheckinUrl(checkinUrl);
+        if (checkinUrl != null) {
+            payload.setCheckinUrl(this.checkinUrl.toString());
+        }
         payload.setCurrency(currency);
         payload.setElements(elements);
         payload.setFlightInfo(this.flightInfo);
         payload.setIntroMessage(introMessage);
         payload.setLocale(locale);
         payload.setOrderNumber(orderNumber);
-        payload.setOrderUrl(orderUrl);
+        if (this.orderUrl != null) {
+            payload.setOrderUrl(orderUrl.toString());
+        }
         payload.setPassengerInfo(this.passengerInfo);
         payload.setPassengerSegmentInfo(this.passengerSegmentInfo);
         payload.setPaymentMethod(paymentMethod);
@@ -316,14 +309,70 @@ final public class PayloadBuilder {
         payload.setRecipientName(recipientName);
         payload.setSummary(summary);
         payload.setTax(tax);
-        payload.setTemplateType(templateType);
+        payload.setTemplateType(templateType.templateType());
         payload.setText(text);
-        payload.setTimestamp(timestamp);
+        payload.setTimestamp(ISO_LOCAL_DATE_TIME.format(this.timestamp));
         payload.setTotalPrice(totalPrice);
         payload.setUpdateFlightInfo(updateFlightInfo);
         payload.setUpdateType(updateType);
+        if (this.url != null) {
+            payload.setUrl(this.url.toString());
+        }
 
         return payload;
+    }
+
+    private void validatePayload() throws IllegalArgumentException {
+        if (this.templateType == null) {
+            // check URL - only used for non-template types
+            if (this.url == null) {
+                throw new IllegalArgumentException(
+                        "PayloadBuilder 'url' cannot be null if 'payload' included in simple messages.");
+            }
+        } else {
+            if (this.elements == null) {
+                throw new IllegalArgumentException(
+                        "PayloadBuilder 'elements' cannot be null.");
+            }
+            
+            switch (this.templateType) {
+                case AIRLINE_BOARDING_PASS: {
+                    validateBoardingPassTemplate();
+                    break;
+                }
+                case AIRLINE_CHECKIN: {
+                    vaildateAirlineCheckinTemplate();
+                    break;
+                }
+                case AIRLINE_ITINERARY: {
+                    validateAirlineItinerary();
+                    break;
+                }
+                case AIRLINE_UPDATE: {
+                    validateAirlineFlightUpdate();
+                    break;
+                }
+                case BUTTON: {
+                    validateButtonTemplate();
+                    break;
+                }
+                case GENERIC: {
+                    validateGenericTemplate();
+                    break;
+                }
+                case LIST: {
+                    validateListTemplate();
+                    break;
+                }
+                case RECEIPT: {
+                    validateReceiptTemplate();
+                    break;
+                }
+                default: {
+                    // nothing to validate?
+                }
+            }
+        }
     }
 
     private void validateAirlineFlightUpdate() throws IllegalArgumentException {
@@ -444,9 +493,10 @@ final public class PayloadBuilder {
                     "PayloadBuilder 'summary' cannot be null for receipt template type.");
         }
 
-        if (this.elements.size() > 100) {
+        if (this.elements.size() > MAX_NUM_ELEMENTS_RECEIPT) {
             throw new IllegalArgumentException(
-                "PayloadBuilder 'elements' cannot contain more than 100 elements for receipt template type.");
+                "PayloadBuilder 'elements' cannot contain more than " 
+                        + MAX_NUM_ELEMENTS_RECEIPT + " elements for receipt template type.");
         }
     }
 

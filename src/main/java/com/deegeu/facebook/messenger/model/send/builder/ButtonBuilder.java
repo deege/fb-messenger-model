@@ -129,8 +129,6 @@ final public class ButtonBuilder {
     }
 
     public Button build() {
-        Button button = new Button();
-        
         if (this.type == null) {
             throw new IllegalArgumentException(
                     "ButtonBuilder 'type' cannot be null.");
@@ -149,16 +147,21 @@ final public class ButtonBuilder {
             validatePaymentButton();
         }
         
-            
-        if (fallbackUrl != null) {
-            button.setFallbackUrl(fallbackUrl.toString());
+        Button button = new Button();    
+        if (this.fallbackUrl != null) {
+            button.setFallbackUrl(this.fallbackUrl.toString());
         }
-        button.setMessengerExtensions(messengerExtensions);
-        button.setPayload(payload);
-        button.setTitle(title);
-        button.setType(type.type());
-        button.setWebviewHeightRatio(webviewHeightRatio.webviewHeight());
-        button.setUrl(url.toString());
+        button.setMessengerExtensions(this.messengerExtensions);
+        button.setPayload(this.payload);
+        button.setTitle(this.title);
+        button.setType(this.type.type());
+
+        if (this.webviewHeightRatio != null) {
+            button.setWebviewHeightRatio(this.webviewHeightRatio.webviewHeight());
+        }
+        if (this.url != null) {
+            button.setUrl(this.url.toString());
+        }
         
         return button;
     }

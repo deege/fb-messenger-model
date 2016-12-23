@@ -73,6 +73,20 @@ final public class PassengerSegmentInfoBuilder {
     }
     
     public PassengerSegmentInfo build() {
+        validatePassengerSegment();
+        
+        PassengerSegmentInfo info = new PassengerSegmentInfo();
+        
+        info.setPassengerId(passengerId);
+        info.setProductInfo(productInfo);
+        info.setSeat(seat);
+        info.setSeatType(seatType);
+        info.setSegmentId(segmentId);
+        
+        return info;
+    }
+
+    private void validatePassengerSegment() throws IllegalArgumentException {
         if (this.segmentId == null) {
             throw new IllegalArgumentException("PassengerSegmentInfo 'segmentId' cannot be null.");
         }
@@ -94,16 +108,6 @@ final public class PassengerSegmentInfoBuilder {
                     "PassengerSegmentInfo 'product_info' is limited to " 
                             + PRODUCT_INFO_LIMIT + " items.");
         }
-        
-        PassengerSegmentInfo info = new PassengerSegmentInfo();
-        
-        info.setPassengerId(passengerId);
-        info.setProductInfo(productInfo);
-        info.setSeat(seat);
-        info.setSeatType(seatType);
-        info.setSegmentId(segmentId);
-        
-        return info;
     }
  
     @Override

@@ -33,6 +33,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class RecipientBuilder {
     private Long id;
     
+    private String phoneNumber;
+    
     public RecipientBuilder() { }
     
     public RecipientBuilder id(Long id) {
@@ -41,6 +43,11 @@ public class RecipientBuilder {
     }
     
     public Recipient build() {
+        if ((this.id == null) && (this.phoneNumber == null)) {
+            throw new IllegalArgumentException(
+                    "RecipientBuilder Either 'id' or 'phone_number' musr be set.");
+        }
+        
         Recipient recipient = new Recipient();
         
         recipient.setId(this.id);

@@ -158,6 +158,38 @@ final public class Element {
         this.buttons = buttons;
     }
 
+    public DefaultAction getDefaultAction() {
+        return defaultAction;
+    }
+
+    public void setDefaultAction(DefaultAction defaultAction) {
+        this.defaultAction = defaultAction;
+    }
+
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+    
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);

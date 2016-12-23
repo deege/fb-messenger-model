@@ -32,38 +32,43 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 final public class SummaryBuilder {
 
-    private double subtotal;
+    private Double subtotal;
 
-    private double shippingCost;
+    private Double shippingCost;
 
-    private double totalTax;
+    private Double totalTax;
 
-    private double totalCost;
+    private Double totalCost;
     
     public SummaryBuilder() { }
 
-    public SummaryBuilder subtotal(double subtotal) {
+    public SummaryBuilder subtotal(Double subtotal) {
         this.subtotal = subtotal;
         return this;
     }
 
-    public SummaryBuilder shippingCost(double shippingCost) {
+    public SummaryBuilder shippingCost(Double shippingCost) {
         this.shippingCost = shippingCost;
         return this;
     }
 
-    public SummaryBuilder totalTax(double totalTax) {
+    public SummaryBuilder totalTax(Double totalTax) {
         this.totalTax = totalTax;
         return this;
     }
 
-    public SummaryBuilder totalCost(double totalCost) {
+    public SummaryBuilder totalCost(Double totalCost) {
         this.totalCost = totalCost;
         return this;
     }
     
     public Summary build() {
         Summary summary = new Summary();
+        
+        if (this.totalCost == null) {
+            throw new IllegalArgumentException(
+                    "SummaryBuilder 'total_cost' cannot be null.");
+        }
         
         summary.setShippingCost(this.shippingCost);
         summary.setSubtotal(this.subtotal);

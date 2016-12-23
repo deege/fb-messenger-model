@@ -33,28 +33,61 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @author dspiess
  */
 final public class MessageRequestBuilder {
+    
+    public enum SenderAction {
+        MARK_SEEN("mark_seen"), TYPING_ON("typing_on"), TYPING_OFF("typing_off");
+        
+        final private String action;
+        
+        SenderAction(String action) {
+            this.action = action;
+        }
+        
+        public String action() {
+            return this.action;
+        }
+    }
 
     private Recipient recipient;
 
     private Message message;
     
+    private SenderAction senderAction;
+    
     public MessageRequestBuilder() { }
 
-    public void recipient(Recipient recipient) {
+    public MessageRequestBuilder senderAction(SenderAction senderAction) {
+        this.senderAction = senderAction;
+        return this;
+    }
+    
+    public MessageRequestBuilder recipient(Recipient recipient) {
         this.recipient = recipient;
+        return this;
     }
 
-    public void message(Message message) {
+    public MessageRequestBuilder message(Message message) {
         this.message = message;
+        return this;
     }
         
     public MessageRequest builder() {
+        validateMessageRequest();
+        
         MessageRequest request = new MessageRequest();
         
         request.setMessage(this.message);
         request.setRecipient(this.recipient);
+        request.setSenderAction(this.senderAction.action());
         
         return request;
+    }
+
+    private void validateMessageRequest() throws IllegalArgumentException {
+        if (this.recipient == null) {
+            throw new IllegalArgumentException(
+                    "MessageRequestBuilder: Recipient cannot be null");
+        }
     }
     
     @Override

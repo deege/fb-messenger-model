@@ -42,6 +42,18 @@ final public class MessageRequest {
     @Expose
     private Message message;
     
+    @SerializedName("sender_action")
+    @Expose
+    private String senderAction;
+
+    public String getSenderAction() {
+        return senderAction;
+    }
+
+    public void setSenderAction(String senderAction) {
+        this.senderAction = senderAction;
+    }
+    
     public Recipient getRecipient() {
         return recipient;
     }

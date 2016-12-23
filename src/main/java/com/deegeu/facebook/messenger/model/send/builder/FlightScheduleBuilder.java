@@ -24,6 +24,8 @@
 package com.deegeu.facebook.messenger.model.send.builder;
 
 import com.deegeu.facebook.messenger.model.send.FlightSchedule;
+import java.time.LocalDateTime;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -32,34 +34,53 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 final public class FlightScheduleBuilder {
 
-    private String boardingTime;
+    private LocalDateTime boardingTime;
 
-    private String departureTime;
+    private LocalDateTime departureTime;
 
-    private String arrivalTime;
+    private LocalDateTime arrivalTime;
     
     public FlightScheduleBuilder() { }
 
-    public void boardingTime(String boardingTime) {
+    public FlightScheduleBuilder boardingTime(LocalDateTime boardingTime) {
         this.boardingTime = boardingTime;
+        return this;
     }
 
-    public void departureTime(String departureTime) {
+    public FlightScheduleBuilder departureTime(LocalDateTime departureTime) {
         this.departureTime = departureTime;
+        return this;
     }
 
-    public void arrivalTime(String arrivalTime) {
+    public FlightScheduleBuilder arrivalTime(LocalDateTime arrivalTime) {
         this.arrivalTime = arrivalTime;
+        return this;
     }
     
     public FlightSchedule build() {
+        validateFlightSchedule();
+        
         FlightSchedule schedule = new FlightSchedule();
         
-        schedule.setArrivalTime(arrivalTime);
-        schedule.setBoardingTime(boardingTime);
-        schedule.setDepartureTime(departureTime);
+        schedule.setArrivalTime(ISO_LOCAL_DATE_TIME.format(this.arrivalTime));
+        schedule.setDepartureTime(ISO_LOCAL_DATE_TIME.format(this.departureTime));
+        
+        if (this.boardingTime != null) {
+            schedule.setBoardingTime(ISO_LOCAL_DATE_TIME.format(this.boardingTime));
+        }
         
         return schedule;
+    }
+
+    private void validateFlightSchedule() throws IllegalArgumentException {
+        if (this.arrivalTime == null) {
+            throw new IllegalArgumentException(
+                    "FlightScheduleBuilder 'arrivalTime' cannot be null.");
+        }
+        if (this.departureTime == null) {
+            throw new IllegalArgumentException(
+                    "FlightScheduleBuilder 'departureTime' cannot be null.");
+        }
     }
 
     @Override

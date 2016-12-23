@@ -25,6 +25,8 @@ package com.deegeu.facebook.messenger.model.send.builder;
 
 import com.deegeu.facebook.messenger.model.send.Attachment;
 import com.deegeu.facebook.messenger.model.send.Message;
+import com.deegeu.facebook.messenger.model.send.QuickReply;
+import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -32,66 +34,77 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @author dspiess
  */
 final public class MessageBuilder {
-
+    private static final int MAX_META_LENGTH = 1000;
+    
+    private static final int MAX_TEXT_LENGTH = 640;
+    
     private Attachment attachment;
 
     private String text;
 
-    private String quickReply;
+    private List<QuickReply> quickReplies = null;
 
     private Boolean isEcho;
 
     private String metadata;
 
-    public void attachment(Attachment attachment) {
+    public MessageBuilder attachment(Attachment attachment) {
         this.attachment = attachment;
+        return this;
     }
 
-    public void text(String text) {
-        if (attachment != null) {
-            throw new IllegalArgumentException("Message text and attachment cannot both be set.");
-        }
-        
-        if (text.length() > 640) {
-            throw new IllegalArgumentException("Metadata cannot be longer than 640 characters.");
-        }
+    public MessageBuilder text(String text) {        
         this.text = text;
+        return this;
     }
 
-    public void quickReply(String quickReply) {
-        this.quickReply = quickReply;
+    public MessageBuilder quickReplies(List<QuickReply> quickReplies) {
+        this.quickReplies = quickReplies;
+        return this;
     }
 
-    public void isEcho(Boolean isEcho) {
+    public MessageBuilder isEcho(Boolean isEcho) {
         this.isEcho = isEcho;
+        return this;
     }
 
-    public void metadata(String metadata) {
-        if (metadata.length() > 1000) {
-            throw new IllegalArgumentException("Metadata cannot be longer than 1000 characters.");
-        }
-               
+    public MessageBuilder metadata(String metadata) {         
         this.metadata = metadata;
+        return this;
     }
     
     public Message build() {
-        if ((attachment != null) && (text != null)) {
-            throw new IllegalArgumentException("Message text and attachment cannot both be set.");
-        }
-        
-        if ((attachment == null) && (text == null)) {
-            throw new IllegalArgumentException("Either message text or attachment must be set.");
-        }
+        validateMessage();
         
         Message message = new Message();
         
-        message.setAttachment(attachment);
-        message.setIsEcho(isEcho);
-        message.setMetadata(metadata);
-        message.setQuickReply(quickReply);
-        message.setText(text);
+        message.setAttachment(this.attachment);
+        message.setIsEcho(this.isEcho);
+        message.setMetadata(this.metadata);
+        message.setQuickReply(this.quickReplies);
+        message.setText(this.text);
         
         return message;
+    }
+
+    private void validateMessage() throws IllegalArgumentException {
+        if ((this.attachment != null) && (this.text != null)) {
+            throw new IllegalArgumentException("MessageBuilder 'text' and 'attachment' cannot both be set.");
+        }
+        
+        if ((this.attachment == null) && (this.text == null)) {
+            throw new IllegalArgumentException("MessageBuilder either 'text' or 'attachment' must be set.");
+        }
+        
+        if ((this.text != null) && (this.text.length() > MAX_TEXT_LENGTH)) {
+            throw new IllegalArgumentException("MessageBuilder 'text' cannot be longer than " 
+                    + MAX_TEXT_LENGTH + " characters.");
+        }
+        
+        if ((this.metadata != null) && (this.metadata.length() > MAX_META_LENGTH)) {
+            throw new IllegalArgumentException("MessageBuilder 'metadata' cannot be longer than " 
+                    + MAX_META_LENGTH + " characters.");
+        }
     }
     
     @Override

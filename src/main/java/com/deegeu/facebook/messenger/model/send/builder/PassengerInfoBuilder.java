@@ -56,13 +56,7 @@ final public class PassengerInfoBuilder {
     }
     
     public PassengerInfo build() {
-        if (this.name == null) {
-            throw new IllegalArgumentException("PassengerInfo 'name' cannot be null.");
-        }
-        
-        if (this.passengerId == null) {
-            throw new IllegalArgumentException("PassengerInfo 'passengerId' cannot be null.");
-        }
+        validatePassengerInfo();
         
         PassengerInfo info = new PassengerInfo();
         
@@ -71,6 +65,16 @@ final public class PassengerInfoBuilder {
         info.setTicketNumber(this.ticketNumber);
         
         return info;
+    }
+
+    private void validatePassengerInfo() throws IllegalArgumentException {
+        if (this.name == null) {
+            throw new IllegalArgumentException("PassengerInfo 'name' cannot be null.");
+        }
+        
+        if (this.passengerId == null) {
+            throw new IllegalArgumentException("PassengerInfo 'passengerId' cannot be null.");
+        }
     }
     
     @Override

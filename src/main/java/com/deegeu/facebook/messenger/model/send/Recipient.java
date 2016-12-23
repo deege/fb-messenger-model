@@ -34,21 +34,23 @@ final public class Recipient {
     @SerializedName("id")
     @Expose
     private Long id;
+    
+    @SerializedName("phone_number")
+    @Expose
+    private Long phoneNumber;
 
-    /**
-     * 
-     * @return
-     *     The id
-     */
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public Long getId() {
         return id;
     }
 
-    /**
-     * 
-     * @param id
-     *     The id
-     */
     public void setId(Long id) {
         this.id = id;
     }
@@ -61,7 +63,8 @@ final public class Recipient {
     @Override
     public int hashCode() {
         return new HashCodeBuilder()
-                .append(id)
+                .append(this.id)
+                .append(this.phoneNumber)
                 .toHashCode();
     }
 
@@ -75,7 +78,8 @@ final public class Recipient {
         }
         Recipient rhs = ((Recipient) other);
         return new EqualsBuilder()
-                .append(id, rhs.id)
+                .append(this.id, rhs.id)
+                .append(this.phoneNumber, rhs.phoneNumber)
                 .isEquals();
     }
 
