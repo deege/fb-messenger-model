@@ -71,7 +71,7 @@ final public class MessageRequestBuilder {
         return this;
     }
         
-    public MessageRequest builder() {
+    public MessageRequest build() {
         validateMessageRequest();
         
         MessageRequest request = new MessageRequest();
