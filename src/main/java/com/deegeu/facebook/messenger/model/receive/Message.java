@@ -32,6 +32,18 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 final public class Message {
 
+    @SerializedName("is_echo")
+    @Expose
+    private Boolean isEcho;
+    
+    @SerializedName("app_id")
+    @Expose
+    private Long appId;
+    
+    @SerializedName("metadata")
+    @Expose
+    private String metadata;
+    
     @SerializedName("mid")
     @Expose
     private String mid;
@@ -51,16 +63,15 @@ final public class Message {
     @SerializedName("attachments")
     @Expose
     private List<Attachment> attachments;
-    
-    @SerializedName("is_echo")
-    @Expose
-    private Boolean isEcho;
-    
-    
-    @SerializedName("metadata")
-    @Expose
-    private String metadata;
 
+    public Long getAppId() {
+        return appId;
+    }
+
+    public void setAppId(Long appId) {
+        this.appId = appId;
+    }
+    
     public String getMetadata() {
         return metadata;
     }
