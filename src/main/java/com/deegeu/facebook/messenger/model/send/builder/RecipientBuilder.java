@@ -45,7 +45,7 @@ public class RecipientBuilder {
     public Recipient build() {
         if ((this.id == null) && (this.phoneNumber == null)) {
             throw new IllegalArgumentException(
-                    "RecipientBuilder Either 'id' or 'phone_number' musr be set.");
+                    "RecipientBuilder Either 'id' or 'phone_number' must be set.");
         }
         
         Recipient recipient = new Recipient();
