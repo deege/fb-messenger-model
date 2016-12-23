@@ -34,7 +34,7 @@ final public class Message {
 
     @SerializedName("is_echo")
     @Expose
-    private Boolean isEcho;
+    private boolean isEcho;
     
     @SerializedName("app_id")
     @Expose
@@ -80,11 +80,11 @@ final public class Message {
         this.metadata = metadata;
     }
 
-    public Boolean getIsEcho() {
+    public boolean getIsEcho() {
         return isEcho;
     }
 
-    public void setIsEcho(Boolean isEcho) {
+    public void setIsEcho(boolean isEcho) {
         this.isEcho = isEcho;
     }
 
