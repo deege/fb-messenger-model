@@ -39,7 +39,7 @@ final public class Message {
     @JsonProperty("is_echo")
     @SerializedName("is_echo")
     @Expose
-    private boolean isEcho;
+    private Boolean isEcho;
     
     @JsonProperty("app_id")
     @SerializedName("app_id")
@@ -97,12 +97,12 @@ final public class Message {
     }
 
     @JsonProperty("is_echo")
-    public boolean getIsEcho() {
+    public Boolean getIsEcho() {
         return isEcho;
     }
 
     @JsonProperty("is_echo")
-    public void setIsEcho(boolean isEcho) {
+    public void setIsEcho(Boolean isEcho) {
         this.isEcho = isEcho;
     }
 
