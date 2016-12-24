@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -30,70 +32,50 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Entry {
 
+    @JsonProperty("id")
     @SerializedName("id")
     @Expose
     private Long id;
     
+    @JsonProperty("time")
     @SerializedName("time")
     @Expose
     private Long time;
     
+    @JsonProperty("messaging")
     @SerializedName("messaging")
     @Expose
     private List<Messaging> messaging = null;
 
-    /**
-     * 
-     * @return
-     *     The id
-     */
+    @JsonProperty("id")
     public Long getId() {
         return id;
     }
 
-    /**
-     * 
-     * @param id
-     *     The id
-     */
+    @JsonProperty("id")
     public void setId(Long id) {
         this.id = id;
     }
 
-    /**
-     * 
-     * @return
-     *     The time
-     */
+    @JsonProperty("time")
     public Long getTime() {
         return time;
     }
 
-    /**
-     * 
-     * @param time
-     *     The time
-     */
+    @JsonProperty("time")
     public void setTime(Long time) {
         this.time = time;
     }
 
-    /**
-     * 
-     * @return
-     *     The messaging
-     */
+    @JsonProperty("messaging")
     public List<Messaging> getMessaging() {
         return messaging;
     }
 
-    /**
-     * 
-     * @param messaging
-     *     The messaging
-     */
+    @JsonProperty("messaging")
     public void setMessaging(List<Messaging> messaging) {
         this.messaging = messaging;
     }

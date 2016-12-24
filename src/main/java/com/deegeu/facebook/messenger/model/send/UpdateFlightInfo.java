@@ -23,87 +23,73 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class UpdateFlightInfo {
 
+    @JsonProperty("flight_number")
     @SerializedName("flight_number")
     @Expose
     private String flightNumber;
+    
+    @JsonProperty("departure_airport")
     @SerializedName("departure_airport")
     @Expose
     private DepartureAirport departureAirport;
+    
+    @JsonProperty("arrival_airport")
     @SerializedName("arrival_airport")
     @Expose
     private ArrivalAirport arrivalAirport;
+    
+    @JsonProperty("flight_schedule")
     @SerializedName("flight_schedule")
     @Expose
     private FlightSchedule flightSchedule;
 
-    /**
-     *
-     * @return The flightNumber
-     */
+    @JsonProperty("flight_number")
     public String getFlightNumber() {
         return flightNumber;
     }
 
-    /**
-     *
-     * @param flightNumber The flight_number
-     */
+    @JsonProperty("flight_number")
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
 
-    /**
-     *
-     * @return The departureAirport
-     */
+    @JsonProperty("departure_airport")
     public DepartureAirport getDepartureAirport() {
         return departureAirport;
     }
 
-    /**
-     *
-     * @param departureAirport The departure_airport
-     */
+    @JsonProperty("departure_airport")
     public void setDepartureAirport(DepartureAirport departureAirport) {
         this.departureAirport = departureAirport;
     }
 
-    /**
-     *
-     * @return The arrivalAirport
-     */
+    @JsonProperty("arrival_airport")
     public ArrivalAirport getArrivalAirport() {
         return arrivalAirport;
     }
 
-    /**
-     *
-     * @param arrivalAirport The arrival_airport
-     */
+    @JsonProperty("arrival_airport")
     public void setArrivalAirport(ArrivalAirport arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
     }
 
-    /**
-     *
-     * @return The flightSchedule
-     */
+    @JsonProperty("flight_schedule")
     public FlightSchedule getFlightSchedule() {
         return flightSchedule;
     }
 
-    /**
-     *
-     * @param flightSchedule The flight_schedule
-     */
+    @JsonProperty("flight_schedule")
     public void setFlightSchedule(FlightSchedule flightSchedule) {
         this.flightSchedule = flightSchedule;
     }

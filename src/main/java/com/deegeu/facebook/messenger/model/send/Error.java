@@ -23,106 +23,88 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Error {
 
+    @JsonProperty("message")
     @SerializedName("message")
     @Expose
     private String message;
+    
+    @JsonProperty("type")
     @SerializedName("type")
     @Expose
     private String type;
+    
+    @JsonProperty("code")
     @SerializedName("code")
     @Expose
     private long code;
+    
+    @JsonProperty("error_subcode")
     @SerializedName("error_subcode")
     @Expose
     private long errorSubcode;
+    
+    @JsonProperty("fbtrace_id")
     @SerializedName("fbtrace_id")
     @Expose
     private String fbtraceId;
 
-    /**
-     *
-     * @return The message
-     */
+    @JsonProperty("message")
     public String getMessage() {
         return message;
     }
 
-    /**
-     *
-     * @param message The message
-     */
+    @JsonProperty("message")
     public void setMessage(String message) {
         this.message = message;
     }
 
-    /**
-     *
-     * @return The type
-     */
+    @JsonProperty("type")
     public String getType() {
         return type;
     }
 
-    /**
-     *
-     * @param type The type
-     */
+    @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     *
-     * @return The code
-     */
+    @JsonProperty("code")
     public long getCode() {
         return code;
     }
 
-    /**
-     *
-     * @param code The code
-     */
+    @JsonProperty("code")
     public void setCode(long code) {
         this.code = code;
     }
 
-    /**
-     *
-     * @return The errorSubcode
-     */
+    @JsonProperty("error_subcode")
     public long getErrorSubcode() {
         return errorSubcode;
     }
 
-    /**
-     *
-     * @param errorSubcode The error_subcode
-     */
+    @JsonProperty("error_subcode")
     public void setErrorSubcode(long errorSubcode) {
         this.errorSubcode = errorSubcode;
     }
 
-    /**
-     *
-     * @return The fbtraceId
-     */
+    @JsonProperty("fbtrace_id")
     public String getFbtraceId() {
         return fbtraceId;
     }
 
-    /**
-     *
-     * @param fbtraceId The fbtrace_id
-     */
+    @JsonProperty("fbtrace_id")
     public void setFbtraceId(String fbtraceId) {
         this.fbtraceId = fbtraceId;
     }

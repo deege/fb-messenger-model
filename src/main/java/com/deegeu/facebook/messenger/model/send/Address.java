@@ -23,137 +23,103 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Address {
 
+    @JsonProperty("street_1")
     @SerializedName("street_1")
     @Expose
     private String street1;
+    
+    @JsonProperty("street_2")
     @SerializedName("street_2")
     @Expose
     private String street2;
+    
+    @JsonProperty("city")
     @SerializedName("city")
     @Expose
     private String city;
+    
+    @JsonProperty("postal_code")
     @SerializedName("postal_code")
     @Expose
     private String postalCode;
+    
+    @JsonProperty("state")
     @SerializedName("state")
     @Expose
     private String state;
+    
+    @JsonProperty("country")
     @SerializedName("country")
     @Expose
     private String country;
 
-    /**
-     * 
-     * @return
-     *     The street1
-     */
+    @JsonProperty("street_1")
     public String getStreet1() {
         return street1;
     }
 
-    /**
-     * 
-     * @param street1
-     *     The street_1
-     */
+    @JsonProperty("street_1")
     public void setStreet1(String street1) {
         this.street1 = street1;
     }
 
-    /**
-     * 
-     * @return
-     *     The street2
-     */
+    @JsonProperty("street_2")
     public String getStreet2() {
         return street2;
     }
 
-    /**
-     * 
-     * @param street2
-     *     The street_2
-     */
+    @JsonProperty("street_2")
     public void setStreet2(String street2) {
         this.street2 = street2;
     }
 
-    /**
-     * 
-     * @return
-     *     The city
-     */
+    @JsonProperty("city")
     public String getCity() {
         return city;
     }
 
-    /**
-     * 
-     * @param city
-     *     The city
-     */
+    @JsonProperty("city")
     public void setCity(String city) {
         this.city = city;
     }
 
-    /**
-     * 
-     * @return
-     *     The postalCode
-     */
+    @JsonProperty("postal_code")
     public String getPostalCode() {
         return postalCode;
     }
 
-    /**
-     * 
-     * @param postalCode
-     *     The postal_code
-     */
+    @JsonProperty("postal_code")
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
-    /**
-     * 
-     * @return
-     *     The state
-     */
+    @JsonProperty("state")
     public String getState() {
         return state;
     }
 
-    /**
-     * 
-     * @param state
-     *     The state
-     */
+    @JsonProperty("state")
     public void setState(String state) {
         this.state = state;
     }
 
-    /**
-     * 
-     * @return
-     *     The country
-     */
+    @JsonProperty("country")
     public String getCountry() {
         return country;
     }
 
-    /**
-     * 
-     * @param country
-     *     The country
-     */
+    @JsonProperty("country")
     public void setCountry(String country) {
         this.country = country;
     }

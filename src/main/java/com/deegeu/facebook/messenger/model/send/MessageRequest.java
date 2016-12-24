@@ -23,49 +23,57 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class MessageRequest {
+    @JsonProperty("recipient")
     @SerializedName("recipient")
     @Expose
     private Recipient recipient;
 
+    @JsonProperty("message")
     @SerializedName("message")
     @Expose
     private Message message;
     
+    @JsonProperty("sender_action")
     @SerializedName("sender_action")
     @Expose
     private String senderAction;
 
+    @JsonProperty("sender_action")
     public String getSenderAction() {
         return senderAction;
     }
 
+    @JsonProperty("sender_action")
     public void setSenderAction(String senderAction) {
         this.senderAction = senderAction;
     }
     
+    @JsonProperty("recipient")
     public Recipient getRecipient() {
         return recipient;
     }
 
+    @JsonProperty("recipient")
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
     }
 
+    @JsonProperty("message")
     public Message getMessage() {
         return message;
     }
 
+    @JsonProperty("message")
     public void setMessage(Message message) {
         this.message = message;
     }

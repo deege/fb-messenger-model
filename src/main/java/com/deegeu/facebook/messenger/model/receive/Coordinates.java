@@ -23,37 +23,42 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Coordinates {
+    @JsonProperty("lat")
     @SerializedName("lat")
     @Expose
     private Double lat;
     
+    @JsonProperty("long")
     @SerializedName("long")
     @Expose
     private Double longitude;
 
+    @JsonProperty("lat")
     public Double getLat() {
         return lat;
     }
 
+    @JsonProperty("lat")
     public void setLat(Double lat) {
         this.lat = lat;
     }
 
+    @JsonProperty("long")
     public Double getLong() {
         return longitude;
     }
 
+    @JsonProperty("long")
     public void setLong(Double longitude) {
         this.longitude = longitude;
     }

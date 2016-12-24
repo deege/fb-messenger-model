@@ -23,95 +23,73 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Summary {
 
+    @JsonProperty("subtotal")
     @SerializedName("subtotal")
     @Expose
     private double subtotal;
+    
+    @JsonProperty("shipping_cost")
     @SerializedName("shipping_cost")
     @Expose
     private double shippingCost;
+    
+    @JsonProperty("total_tax")
     @SerializedName("total_tax")
     @Expose
     private double totalTax;
+    
+    @JsonProperty("total_cost")
     @SerializedName("total_cost")
     @Expose
     private double totalCost;
 
-    /**
-     * 
-     * @return
-     *     The subtotal
-     */
+    @JsonProperty("subtotal")
     public double getSubtotal() {
         return subtotal;
     }
 
-    /**
-     * 
-     * @param subtotal
-     *     The subtotal
-     */
+    @JsonProperty("subtotal")
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
 
-    /**
-     * 
-     * @return
-     *     The shippingCost
-     */
+    @JsonProperty("shipping_cost")
     public double getShippingCost() {
         return shippingCost;
     }
 
-    /**
-     * 
-     * @param shippingCost
-     *     The shipping_cost
-     */
+    @JsonProperty("shipping_cost")
     public void setShippingCost(double shippingCost) {
         this.shippingCost = shippingCost;
     }
 
-    /**
-     * 
-     * @return
-     *     The totalTax
-     */
+    @JsonProperty("total_tax")
     public double getTotalTax() {
         return totalTax;
     }
 
-    /**
-     * 
-     * @param totalTax
-     *     The total_tax
-     */
+    @JsonProperty("total_tax")
     public void setTotalTax(double totalTax) {
         this.totalTax = totalTax;
     }
 
-    /**
-     * 
-     * @return
-     *     The totalCost
-     */
+    @JsonProperty("total_cost")
     public double getTotalCost() {
         return totalCost;
     }
 
-    /**
-     * 
-     * @param totalCost
-     *     The total_cost
-     */
+    @JsonProperty("total_cost")
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }

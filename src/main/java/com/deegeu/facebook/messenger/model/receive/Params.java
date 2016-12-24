@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.Map;
@@ -30,68 +32,50 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Params {
 
+    @JsonProperty("path")
     @SerializedName("path")
     @Expose
     private Map<String, Object> path;
+    
+    @JsonProperty("querystring")
     @SerializedName("querystring")
     @Expose
     private Map<String, Object> querystring;
+    
+    @JsonProperty("header")
     @SerializedName("header")
     @Expose
     private Map<String, Object> header;
 
-    /**
-     * 
-     * @return
-     *     The path
-     */
+    @JsonProperty("path")
     public Map<String, Object> getPath() {
         return path;
     }
 
-    /**
-     * 
-     * @param path
-     *     The path
-     */
+    @JsonProperty("path")
     public void setPath(Map<String, Object> path) {
         this.path = path;
     }
 
-    /**
-     * 
-     * @return
-     *     The querystring
-     */
+    @JsonProperty("querystring")
     public Map<String, Object> getQuerystring() {
         return querystring;
     }
 
-    /**
-     * 
-     * @param querystring
-     *     The querystring
-     */
+    @JsonProperty("querystring")
     public void setQuerystring(Map<String, Object> querystring) {
         this.querystring = querystring;
     }
 
-    /**
-     * 
-     * @return
-     *     The header
-     */
+    @JsonProperty("header")
     public Map<String, Object> getHeader() {
         return header;
     }
 
-    /**
-     * 
-     * @param header
-     *     The header
-     */
+    @JsonProperty("header")
     public void setHeader(Map<String, Object> header) {
         this.header = header;
     }

@@ -23,37 +23,43 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Attachment {
+    
+    @JsonProperty("type")
     @SerializedName("type")
     @Expose
     private String type;
     
+    @JsonProperty("payload")
     @SerializedName("payload")
     @Expose
     private Payload payload;
 
+    @JsonProperty("type")
     public String getType() {
         return type;
     }
 
+    @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
     }
 
+    @JsonProperty("payload")
     public Payload getPayload() {
         return payload;
     }
 
+    @JsonProperty("payload")
     public void setPayload(Payload payload) {
         this.payload = payload;
     }

@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -33,29 +35,35 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * @author dspiess
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Payload {
     
+    @JsonProperty("url")
     @SerializedName("url")
     @Expose
     private String url;
     
+    @JsonProperty("coordinates")
     @SerializedName("coordinates")
     @Expose
     private Coordinates coordinates;
     
-
+    @JsonProperty("url")
     public String getUrl() {
         return url;
     }
 
+    @JsonProperty("url")
     public void setUrl(String url) {
         this.url = url;
     }
 
+    @JsonProperty("coordinates")
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
+    @JsonProperty("coordinates")
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }

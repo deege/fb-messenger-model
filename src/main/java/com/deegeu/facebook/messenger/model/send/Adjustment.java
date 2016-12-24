@@ -23,53 +23,43 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Adjustment {
 
+    @JsonProperty("name")
     @SerializedName("name")
     @Expose
     private String name;
+    
+    @JsonProperty("amount")
     @SerializedName("amount")
     @Expose
     private long amount;
 
-    /**
-     * 
-     * @return
-     *     The name
-     */
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    /**
-     * 
-     * @param name
-     *     The name
-     */
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * 
-     * @return
-     *     The amount
-     */
+    @JsonProperty("amount")
     public long getAmount() {
         return amount;
     }
 
-    /**
-     * 
-     * @param amount
-     *     The amount
-     */
+    @JsonProperty("amount")
     public void setAmount(long amount) {
         this.amount = amount;
     }

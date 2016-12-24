@@ -23,53 +23,43 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class ProductInfo {
 
+    @JsonProperty("title")
     @SerializedName("title")
     @Expose
     private String title;
+    
+    @JsonProperty("value")
     @SerializedName("value")
     @Expose
     private String value;
 
-    /**
-     * 
-     * @return
-     *     The title
-     */
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
-    /**
-     * 
-     * @param title
-     *     The title
-     */
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * 
-     * @return
-     *     The value
-     */
+    @JsonProperty("value")
     public String getValue() {
         return value;
     }
 
-    /**
-     * 
-     * @param value
-     *     The value
-     */
+    @JsonProperty("value")
     public void setValue(String value) {
         this.value = value;
     }

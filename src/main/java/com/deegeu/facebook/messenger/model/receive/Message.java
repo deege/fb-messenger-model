@@ -30,130 +30,128 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Message {
 
+    @JsonProperty("is_echo")
     @SerializedName("is_echo")
     @Expose
     private boolean isEcho;
     
+    @JsonProperty("app_id")
     @SerializedName("app_id")
     @Expose
     private Long appId;
     
+    @JsonProperty("metadata")
     @SerializedName("metadata")
     @Expose
     private String metadata;
     
+    @JsonProperty("mid")
     @SerializedName("mid")
     @Expose
     private String mid;
     
+    @JsonProperty("seq")
     @SerializedName("seq")
     @Expose
     private Long seq;
     
+    @JsonProperty("text")
     @SerializedName("text")
     @Expose
     private String text;
 
+    @JsonProperty("quick_reply")
     @SerializedName("quick_reply")
     @Expose
     private String quickReply;
     
+    @JsonProperty("attachments")
     @SerializedName("attachments")
     @Expose
     private List<Attachment> attachments;
 
+    @JsonProperty("app_id")
     public Long getAppId() {
         return appId;
     }
 
+    @JsonProperty("app_id")
     public void setAppId(Long appId) {
         this.appId = appId;
     }
     
+    @JsonProperty("metadata")
     public String getMetadata() {
         return metadata;
     }
 
+    @JsonProperty("metadata")
     public void setMetadata(String metadata) {
         this.metadata = metadata;
     }
 
+    @JsonProperty("is_echo")
     public boolean getIsEcho() {
         return isEcho;
     }
 
+    @JsonProperty("is_echo")
     public void setIsEcho(boolean isEcho) {
         this.isEcho = isEcho;
     }
 
+    @JsonProperty("quick_reply")
     public String getQuickReply() {
         return quickReply;
     }
 
+    @JsonProperty("quick_reply")
     public void setQuickReply(String quickReply) {
         this.quickReply = quickReply;
     }
 
+    @JsonProperty("attachments")
     public List<Attachment> getAttachments() {
         return attachments;
     }
 
+    @JsonProperty("attachments")
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
 
-    /**
-     * 
-     * @return
-     *     The mid
-     */
+    @JsonProperty("mid")
     public String getMid() {
         return mid;
     }
 
-    /**
-     * 
-     * @param mid
-     *     The mid
-     */
+    @JsonProperty("mid")
     public void setMid(String mid) {
         this.mid = mid;
     }
 
-    /**
-     * 
-     * @return
-     *     The seq
-     */
+    @JsonProperty("seq")
     public Long getSeq() {
         return seq;
     }
 
-    /**
-     * 
-     * @param seq
-     *     The seq
-     */
+    @JsonProperty("seq")
     public void setSeq(Long seq) {
         this.seq = seq;
     }
 
-    /**
-     * 
-     * @return
-     *     The text
-     */
+    @JsonProperty("text")
     public String getText() {
         return text;
     }
 
-    /**
-     * 
-     * @param text
-     *     The text
-     */
+    @JsonProperty("text")
     public void setText(String text) {
         this.text = text;
     }

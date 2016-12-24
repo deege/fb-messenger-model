@@ -23,32 +23,27 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Recipient {
-
+    @JsonProperty("id")
     @SerializedName("id")
     @Expose
     private Long id;
 
-    /**
-     * 
-     * @return
-     *     The id
-     */
+    @JsonProperty("id")
     public Long getId() {
         return id;
     }
 
-    /**
-     * 
-     * @param id
-     *     The id
-     */
+    @JsonProperty("id")
     public void setId(Long id) {
         this.id = id;
     }

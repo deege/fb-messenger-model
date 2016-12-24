@@ -23,27 +23,28 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Optin {
     
-    
+    @JsonProperty("ref")
     @SerializedName("ref")
     @Expose
     private String ref;
 
+    @JsonProperty("ref")
     public String getRef() {
         return ref;
     }
 
+    @JsonProperty("ref")
     public void setRef(String ref) {
         this.ref = ref;
     }

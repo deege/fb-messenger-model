@@ -23,64 +23,58 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class FlightSchedule {
 
+    @JsonProperty("boarding_time")
     @SerializedName("boarding_time")
     @Expose
     private String boardingTime;
+    
+    @JsonProperty("departure_time")
     @SerializedName("departure_time")
     @Expose
     private String departureTime;
+    
+    @JsonProperty("arrival_time")
     @SerializedName("arrival_time")
     @Expose
     private String arrivalTime;
 
+    @JsonProperty("boarding_time")
     public String getBoardingTime() {
         return boardingTime;
     }
 
+    @JsonProperty("boarding_time")
     public void setBoardingTime(String boardingTime) {
         this.boardingTime = boardingTime;
     }
   
-    /**
-     * 
-     * @return
-     *     The departureTime
-     */
+    @JsonProperty("departure_time")
     public String getDepartureTime() {
         return departureTime;
     }
 
-    /**
-     * 
-     * @param departureTime
-     *     The departure_time
-     */
+    @JsonProperty("departure_time")
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
 
-    /**
-     * 
-     * @return
-     *     The arrivalTime
-     */
+    @JsonProperty("arrival_time")
     public String getArrivalTime() {
         return arrivalTime;
     }
 
-    /**
-     * 
-     * @param arrivalTime
-     *     The arrival_time
-     */
+    @JsonProperty("arrival_time")
     public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
     }

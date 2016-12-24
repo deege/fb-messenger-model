@@ -23,76 +23,73 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class ArrivalAirport {
 
+    @JsonProperty("airport_code")
     @SerializedName("airport_code")
     @Expose
     private String airportCode;
+    
+    @JsonProperty("city")
     @SerializedName("city")
     @Expose
     private String city;
+    
+    @JsonProperty("terminal")
     @SerializedName("terminal")
     @Expose
     private String terminal;
+    
+    @JsonProperty("gate")
     @SerializedName("gate")
     @Expose
     private String gate;
 
+    @JsonProperty("terminal")
     public String getTerminal() {
         return terminal;
     }
 
+    @JsonProperty("terminal")
     public void setTerminal(String terminal) {
         this.terminal = terminal;
     }
 
+    @JsonProperty("gate")
     public String getGate() {
         return gate;
     }
 
+    @JsonProperty("gate")
     public void setGate(String gate) {
         this.gate = gate;
     }
 
-    
-    /**
-     * 
-     * @return
-     *     The airportCode
-     */
+    @JsonProperty("airport_code")
     public String getAirportCode() {
         return airportCode;
     }
 
-    /**
-     * 
-     * @param airportCode
-     *     The airport_code
-     */
+    @JsonProperty("airport_code")
     public void setAirportCode(String airportCode) {
         this.airportCode = airportCode;
     }
 
-    /**
-     * 
-     * @return
-     *     The city
-     */
+    @JsonProperty("city")
     public String getCity() {
         return city;
     }
 
-    /**
-     * 
-     * @param city
-     *     The city
-     */
+    @JsonProperty("city")
     public void setCity(String city) {
         this.city = city;
     }

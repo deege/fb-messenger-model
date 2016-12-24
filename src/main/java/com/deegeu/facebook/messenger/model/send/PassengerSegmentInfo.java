@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -30,110 +32,80 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class PassengerSegmentInfo {
 
+    @JsonProperty("segment_id")
     @SerializedName("segment_id")
     @Expose
     private String segmentId;
+    
+    @JsonProperty("passenger_id")
     @SerializedName("passenger_id")
     @Expose
     private String passengerId;
+    
+    @JsonProperty("seat")
     @SerializedName("seat")
     @Expose
     private String seat;
+    
+    @JsonProperty("seat_type")
     @SerializedName("seat_type")
     @Expose
     private String seatType;
+    
+    @JsonProperty("product_info")
     @SerializedName("product_info")
     @Expose
     private List<ProductInfo> productInfo = null;
 
-    /**
-     * 
-     * @return
-     *     The segmentId
-     */
+    @JsonProperty("segment_id")
     public String getSegmentId() {
         return segmentId;
     }
 
-    /**
-     * 
-     * @param segmentId
-     *     The segment_id
-     */
+    @JsonProperty("segment_id")
     public void setSegmentId(String segmentId) {
         this.segmentId = segmentId;
     }
 
-    /**
-     * 
-     * @return
-     *     The passengerId
-     */
+    @JsonProperty("passenger_id")
     public String getPassengerId() {
         return passengerId;
     }
 
-    /**
-     * 
-     * @param passengerId
-     *     The passenger_id
-     */
+    @JsonProperty("passenger_id")
     public void setPassengerId(String passengerId) {
         this.passengerId = passengerId;
     }
 
-    /**
-     * 
-     * @return
-     *     The seat
-     */
+    @JsonProperty("seat")
     public String getSeat() {
         return seat;
     }
 
-    /**
-     * 
-     * @param seat
-     *     The seat
-     */
+    @JsonProperty("seat")
     public void setSeat(String seat) {
         this.seat = seat;
     }
 
-    /**
-     * 
-     * @return
-     *     The seatType
-     */
+    @JsonProperty("seat_type")
     public String getSeatType() {
         return seatType;
     }
 
-    /**
-     * 
-     * @param seatType
-     *     The seat_type
-     */
+    @JsonProperty("seat_type")
     public void setSeatType(String seatType) {
         this.seatType = seatType;
     }
 
-    /**
-     * 
-     * @return
-     *     The productInfo
-     */
+    @JsonProperty("product_info")
     public List<ProductInfo> getProductInfo() {
         return productInfo;
     }
 
-    /**
-     * 
-     * @param productInfo
-     *     The product_info
-     */
+    @JsonProperty("product_info")
     public void setProductInfo(List<ProductInfo> productInfo) {
         this.productInfo = productInfo;
     }
