@@ -23,162 +23,133 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Messaging {
 
+    @JsonProperty("sender")
     @SerializedName("sender")
     @Expose
     private Sender sender;
     
+    @JsonProperty("recipient")
     @SerializedName("recipient")
     @Expose
     private Recipient recipient;
     
+    @JsonProperty("timestamp")
     @SerializedName("timestamp")
     @Expose
     private Long timestamp;
     
+    @JsonProperty("message")
     @SerializedName("message")
     @Expose
     private Message message;
     
+    @JsonProperty("read")
     @SerializedName("read")
     @Expose
     private ReadReceipt readReceipt;
     
+    @JsonProperty("delivery")
     @SerializedName("delivery")
     @Expose
     private Delivery delivery;
     
+    @JsonProperty("optin")
     @SerializedName("optin")
     @Expose
     private Optin optin;
     
+    @JsonProperty("postback")
     @SerializedName("postback")
     @Expose
     private Postback postback;
 
-    public ReadReceipt getReadReceipt() {
-        return readReceipt;
-    }
-
-    public void setReadReceipt(ReadReceipt readReceipt) {
-        this.readReceipt = readReceipt;
-    }
-
+    @JsonProperty("delivery")
     public Delivery getDelivery() {
         return delivery;
     }
 
+    @JsonProperty("delivery")
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
     }
 
+    @JsonProperty("optin")
     public Optin getOptin() {
         return optin;
     }
 
+    @JsonProperty("optin")
     public void setOptin(Optin optin) {
         this.optin = optin;
     }
 
+    @JsonProperty("postback")
     public Postback getPostback() {
         return postback;
     }
 
+    @JsonProperty("postback")
     public void setPostback(Postback postback) {
         this.postback = postback;
     }
     
-    /**
-     * 
-     * @return 
-     */
+    @JsonProperty("read")
     public ReadReceipt getRead() {
         return readReceipt;
     }
 
-    /**
-     * 
-     * @param readReceipt 
-     */
+    @JsonProperty("read")
     public void setRead(ReadReceipt readReceipt) {
         this.readReceipt = readReceipt;
     }
 
-    /**
-     * 
-     * @return
-     *     The sender
-     */
+    @JsonProperty("sender")
     public Sender getSender() {
         return sender;
     }
 
-    /**
-     * 
-     * @param sender
-     *     The sender
-     */
+    @JsonProperty("sender")
     public void setSender(Sender sender) {
         this.sender = sender;
     }
 
-    /**
-     * 
-     * @return
-     *     The recipient
-     */
+    @JsonProperty("recipient")
     public Recipient getRecipient() {
         return recipient;
     }
 
-    /**
-     * 
-     * @param recipient
-     *     The recipient
-     */
+    @JsonProperty("recipient")
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
     }
 
-    /**
-     * 
-     * @return
-     *     The timestamp
-     */
+    @JsonProperty("timestamp")
     public Long getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * 
-     * @param timestamp
-     *     The timestamp
-     */
+    @JsonProperty("timestamp")
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * 
-     * @return
-     *     The message
-     */
+    @JsonProperty("message")
     public Message getMessage() {
         return message;
     }
 
-    /**
-     * 
-     * @param message
-     *     The message
-     */
+    @JsonProperty("message")
     public void setMessage(Message message) {
         this.message = message;
     }

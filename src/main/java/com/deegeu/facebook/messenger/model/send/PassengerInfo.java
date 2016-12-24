@@ -23,74 +23,58 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class PassengerInfo {
 
+    @JsonProperty("name")
     @SerializedName("name")
     @Expose
     private String name;
+    
+    @JsonProperty("ticket_number")
     @SerializedName("ticket_number")
     @Expose
     private String ticketNumber;
+    
+    @JsonProperty("passenger_id")
     @SerializedName("passenger_id")
     @Expose
     private String passengerId;
 
-    /**
-     * 
-     * @return
-     *     The name
-     */
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    /**
-     * 
-     * @param name
-     *     The name
-     */
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * 
-     * @return
-     *     The ticketNumber
-     */
+    @JsonProperty("ticket_number")
     public String getTicketNumber() {
         return ticketNumber;
     }
 
-    /**
-     * 
-     * @param ticketNumber
-     *     The ticket_number
-     */
+    @JsonProperty("ticket_number")
     public void setTicketNumber(String ticketNumber) {
         this.ticketNumber = ticketNumber;
     }
 
-    /**
-     * 
-     * @return
-     *     The passengerId
-     */
+    @JsonProperty("ticket_number")
     public String getPassengerId() {
         return passengerId;
     }
 
-    /**
-     * 
-     * @param passengerId
-     *     The passenger_id
-     */
+    @JsonProperty("ticket_number")
     public void setPassengerId(String passengerId) {
         this.passengerId = passengerId;
     }

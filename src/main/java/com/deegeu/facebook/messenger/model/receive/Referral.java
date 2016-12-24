@@ -23,74 +23,58 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Referral {
 
+    @JsonProperty("ref")
     @SerializedName("ref")
     @Expose
     private String ref;
+    
+    @JsonProperty("source")
     @SerializedName("source")
     @Expose
     private String source;
+    
+    @JsonProperty("type")
     @SerializedName("type")
     @Expose
     private String type;
 
-    /**
-     * 
-     * @return
-     *     The ref
-     */
+    @JsonProperty("ref")
     public String getRef() {
         return ref;
     }
 
-    /**
-     * 
-     * @param ref
-     *     The ref
-     */
+    @JsonProperty("ref")
     public void setRef(String ref) {
         this.ref = ref;
     }
 
-    /**
-     * 
-     * @return
-     *     The source
-     */
+    @JsonProperty("source")
     public String getSource() {
         return source;
     }
 
-    /**
-     * 
-     * @param source
-     *     The source
-     */
+    @JsonProperty("source")
     public void setSource(String source) {
         this.source = source;
     }
 
-    /**
-     * 
-     * @return
-     *     The type
-     */
+    @JsonProperty("type")
     public String getType() {
         return type;
     }
 
-    /**
-     * 
-     * @param type
-     *     The type
-     */
+    @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
     }

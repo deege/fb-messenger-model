@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
@@ -30,75 +32,95 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class PaymentSummary {
 
+    @JsonProperty("currency")
     @SerializedName("currency")
     @Expose
     private String currency;
+    
+    @JsonProperty("payment_type")
     @SerializedName("payment_type")
     @Expose
     private String paymentType;
+    
+    @JsonProperty("is_test_payment")
     @SerializedName("is_test_payment")
     @Expose
     private Boolean isTestPayment;
+    
+    @JsonProperty("merchant_name")
     @SerializedName("merchant_name")
     @Expose
     private String merchantName;
+    
+    @JsonProperty("requested_user_info")
     @SerializedName("requested_user_info")
     @Expose
     private List<String> requestedUserInfo = null;
+    
+    @JsonProperty("price_list")
     @SerializedName("price_list")
     @Expose
     private List<PriceList> priceList = null;
 
+    @JsonProperty("currency")
     public String getCurrency() {
         return currency;
     }
 
+    @JsonProperty("currency")
     public void setCurrency(String currency) {
         this.currency = currency;
     }
 
+    @JsonProperty("payment_type")
     public String getPaymentType() {
         return paymentType;
     }
 
+    @JsonProperty("payment_type")
     public void setPaymentType(String paymentType) {
         this.paymentType = paymentType;
     }
 
+    @JsonProperty("is_test_payment")
     public Boolean getIsTestPayment() {
         return isTestPayment;
     }
 
+    @JsonProperty("is_test_payment")
     public void setIsTestPayment(Boolean isTestPayment) {
         this.isTestPayment = isTestPayment;
     }
 
+    @JsonProperty("merchant_name")
     public String getMerchantName() {
         return merchantName;
     }
 
+    @JsonProperty("merchant_name")
     public void setMerchantName(String merchantName) {
         this.merchantName = merchantName;
     }
 
+    @JsonProperty("requested_user_info")
     public List<String> getRequestedUserInfo() {
         return requestedUserInfo;
     }
 
+    @JsonProperty("requested_user_info")
     public void setRequestedUserInfo(List<String> requestedUserInfo) {
         this.requestedUserInfo = requestedUserInfo;
     }
 
+    @JsonProperty("price_list")
     public List<PriceList> getPriceList() {
         return priceList;
     }
 
+    @JsonProperty("price_list")
     public void setPriceList(List<PriceList> priceList) {
         this.priceList = priceList;
     }

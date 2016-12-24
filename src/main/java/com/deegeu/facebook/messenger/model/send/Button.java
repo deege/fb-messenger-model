@@ -23,146 +23,133 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Button {
 
+    @JsonProperty("type")
     @SerializedName("type")
     @Expose
     private String type;
     
+    @JsonProperty("url")
     @SerializedName("url")
     @Expose
     private String url;
     
+    @JsonProperty("title")
     @SerializedName("title")
     @Expose
     private String title;
     
+    @JsonProperty("payload")
     @SerializedName("payload")
     @Expose
     private String payload;
     
+    @JsonProperty("payment_summary")
     @SerializedName("payment_summary")
     @Expose
     private PaymentSummary paymentSummary;
     
+    @JsonProperty("messenger_extensions")
     @SerializedName("messenger_extensions")
     @Expose
     private boolean messengerExtensions;
     
+    @JsonProperty("webview_height_ratio")
     @SerializedName("webview_height_ratio")
     @Expose
     private String webviewHeightRatio;
     
+    @JsonProperty("fallback_url")
     @SerializedName("fallback_url")
     @Expose
     private String fallbackUrl;
 
+    @JsonProperty("messenger_extensions")
     public boolean isMessengerExtensions() {
         return messengerExtensions;
     }
 
+    @JsonProperty("messenger_extensions")
     public void setMessengerExtensions(boolean messengerExtensions) {
         this.messengerExtensions = messengerExtensions;
     }
 
+    @JsonProperty("webview_height_ratio")
     public String getWebviewHeightRatio() {
         return webviewHeightRatio;
     }
 
+    @JsonProperty("webview_height_ratio")
     public void setWebviewHeightRatio(String webviewHeightRatio) {
         this.webviewHeightRatio = webviewHeightRatio;
     }
 
+    @JsonProperty("fallback_url")
     public String getFallbackUrl() {
         return fallbackUrl;
     }
 
+    @JsonProperty("fallback_url")
     public void setFallbackUrl(String fallbackUrl) {
         this.fallbackUrl = fallbackUrl;
     }
 
+    @JsonProperty("payment_summary")
     public PaymentSummary getPaymentSummary() {
         return paymentSummary;
     }
 
+    @JsonProperty("payment_summary")
     public void setPayloadSummary(PaymentSummary paymentSummary) {
         this.paymentSummary = paymentSummary;
     }
     
-    /**
-     * 
-     * @return
-     *     The type
-     */
+    @JsonProperty("type")
     public String getType() {
         return type;
     }
 
-    /**
-     * 
-     * @param type
-     *     The type
-     */
+    @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * 
-     * @return
-     *     The url
-     */
+    @JsonProperty("url")
     public String getUrl() {
         return url;
     }
 
-    /**
-     * 
-     * @param url
-     *     The url
-     */
+    @JsonProperty("url")
     public void setUrl(String url) {
         this.url = url;
     }
 
-    /**
-     * 
-     * @return
-     *     The title
-     */
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
-    /**
-     * 
-     * @param title
-     *     The title
-     */
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * 
-     * @return
-     *     The payload
-     */
+    @JsonProperty("payload")
     public String getPayload() {
         return payload;
     }
 
-    /**
-     * 
-     * @param payload
-     *     The payload
-     */
+    @JsonProperty("payload")
     public void setPayload(String payload) {
         this.payload = payload;
     }

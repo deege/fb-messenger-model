@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
@@ -30,66 +32,50 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Delivery {
 
+    @JsonProperty("mids")
     @SerializedName("mids")
     @Expose
     private List<String> mids = null;
+    
+    @JsonProperty("watermark")
     @SerializedName("watermark")
     @Expose
     private long watermark;
+    
+    @JsonProperty("seq")
     @SerializedName("seq")
     @Expose
     private long seq;
 
-    /**
-     *
-     * @return The mids
-     */
+    @JsonProperty("mids")
     public List<String> getMids() {
         return mids;
     }
 
-    /**
-     *
-     * @param mids The mids
-     */
+    @JsonProperty("mids")
     public void setMids(List<String> mids) {
         this.mids = mids;
     }
 
-    /**
-     *
-     * @return The watermark
-     */
+    @JsonProperty("watermark")
     public long getWatermark() {
         return watermark;
     }
 
-    /**
-     *
-     * @param watermark The watermark
-     */
+    @JsonProperty("watermark")
     public void setWatermark(long watermark) {
         this.watermark = watermark;
     }
 
-    /**
-     *
-     * @return The seq
-     */
+    @JsonProperty("seq")
     public long getSeq() {
         return seq;
     }
 
-    /**
-     *
-     * @param seq The seq
-     */
+    @JsonProperty("seq")
     public void setSeq(long seq) {
         this.seq = seq;
     }

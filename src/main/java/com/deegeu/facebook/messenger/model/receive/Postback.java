@@ -23,54 +23,43 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Postback {
 
+    @JsonProperty("payload")
     @SerializedName("payload")
     @Expose
     private String payload;
     
+    @JsonProperty("referral")
     @SerializedName("referral")
     @Expose
     private Referral referral;
 
-    /**
-     * 
-     * @return
-     *     The payload
-     */
+    @JsonProperty("payload")
     public String getPayload() {
         return payload;
     }
 
-    /**
-     * 
-     * @param payload
-     *     The payload
-     */
+    @JsonProperty("payload")
     public void setPayload(String payload) {
         this.payload = payload;
     }
 
-    /**
-     * 
-     * @return
-     *     The referral
-     */
+    @JsonProperty("referral")
     public Referral getReferral() {
         return referral;
     }
 
-    /**
-     * 
-     * @param referral
-     *     The referral
-     */
+    @JsonProperty("referral")
     public void setReferral(Referral referral) {
         this.referral = referral;
     }

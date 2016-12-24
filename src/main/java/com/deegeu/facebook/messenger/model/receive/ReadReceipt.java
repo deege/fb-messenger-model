@@ -23,37 +23,42 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class ReadReceipt {
+    @JsonProperty("watermark")
     @SerializedName("watermark")
     @Expose
     private Long watermark;
     
+    @JsonProperty("seq")
     @SerializedName("seq")
     @Expose
     private Long seq;
 
+    @JsonProperty("watermark")
     public Long getWatermark() {
         return watermark;
     }
 
+    @JsonProperty("watermark")
     public void setWatermark(Long watermark) {
         this.watermark = watermark;
     }
 
+    @JsonProperty("seq")
     public Long getSeq() {
         return seq;
     }
 
+    @JsonProperty("seq")
     public void setSeq(Long seq) {
         this.seq = seq;
     }

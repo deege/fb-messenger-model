@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -30,162 +32,140 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class Element {
 
+    @JsonProperty("title")
     @SerializedName("title")
     @Expose
     private String title;
     
+    @JsonProperty("item_url")
     @SerializedName("item_url")
     @Expose
     private String itemUrl;
     
+    @JsonProperty("image_url")
     @SerializedName("image_url")
     @Expose
     private String imageUrl;
     
+    @JsonProperty("subtitle")
     @SerializedName("subtitle")
     @Expose
     private String subtitle;
     
+    @JsonProperty("default_action")
     @SerializedName("default_action")
     @Expose
     private DefaultAction defaultAction;
     
+    @JsonProperty("buttons")
     @SerializedName("buttons")
     @Expose
     private List<Button> buttons = null;
     
+    @JsonProperty("quantity")
     @SerializedName("quantity")
     @Expose
     private long quantity;
     
+    @JsonProperty("price")
     @SerializedName("price")
     @Expose
     private long price;
     
+    @JsonProperty("currency")
     @SerializedName("currency")
     @Expose
     private String currency;
 
-    /**
-     * 
-     * @return
-     *     The title
-     */
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
-    /**
-     * 
-     * @param title
-     *     The title
-     */
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * 
-     * @return
-     *     The itemUrl
-     */
+    @JsonProperty("item_url")
     public String getItemUrl() {
         return itemUrl;
     }
 
-    /**
-     * 
-     * @param itemUrl
-     *     The item_url
-     */
+    @JsonProperty("item_url")
     public void setItemUrl(String itemUrl) {
         this.itemUrl = itemUrl;
     }
 
-    /**
-     * 
-     * @return
-     *     The imageUrl
-     */
+    @JsonProperty("image_url")
     public String getImageUrl() {
         return imageUrl;
     }
 
-    /**
-     * 
-     * @param imageUrl
-     *     The image_url
-     */
+    @JsonProperty("image_url")
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-    /**
-     * 
-     * @return
-     *     The subtitle
-     */
+    @JsonProperty("subtitle")
     public String getSubtitle() {
         return subtitle;
     }
 
-    /**
-     * 
-     * @param subtitle
-     *     The subtitle
-     */
+    @JsonProperty("subtitle")
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
     }
 
-    /**
-     * 
-     * @return
-     *     The buttons
-     */
+    @JsonProperty("buttons")
     public List<Button> getButtons() {
         return buttons;
     }
 
-    /**
-     * 
-     * @param buttons
-     *     The buttons
-     */
+    @JsonProperty("buttons")
     public void setButtons(List<Button> buttons) {
         this.buttons = buttons;
     }
 
+    @JsonProperty("default_action")
     public DefaultAction getDefaultAction() {
         return defaultAction;
     }
 
+    @JsonProperty("default_action")
     public void setDefaultAction(DefaultAction defaultAction) {
         this.defaultAction = defaultAction;
     }
 
+    @JsonProperty("quantity")
     public long getQuantity() {
         return quantity;
     }
 
+    @JsonProperty("quantity")
     public void setQuantity(long quantity) {
         this.quantity = quantity;
     }
 
+    @JsonProperty("price")
     public long getPrice() {
         return price;
     }
 
+    @JsonProperty("price")
     public void setPrice(long price) {
         this.price = price;
     }
 
+    @JsonProperty("currency")
     public String getCurrency() {
         return currency;
     }
 
+    @JsonProperty("currency")
     public void setCurrency(String currency) {
         this.currency = currency;
     }

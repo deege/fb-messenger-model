@@ -23,6 +23,8 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -30,48 +32,35 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class MessageResponse {
 
+    @JsonProperty("object")
     @SerializedName("object")
     @Expose
     private String object;
     
+    @JsonProperty("entry")
     @SerializedName("entry")
     @Expose
     private List<Entry> entry = null;
 
-    /**
-     * 
-     * @return
-     *     The object
-     */
+    @JsonProperty("object")
     public String getObject() {
         return object;
     }
 
-    /**
-     * 
-     * @param object
-     *     The object
-     */
+    @JsonProperty("object")
     public void setObject(String object) {
         this.object = object;
     }
 
-    /**
-     * 
-     * @return
-     *     The entry
-     */
+    @JsonProperty("entry")
     public List<Entry> getEntry() {
         return entry;
     }
 
-    /**
-     * 
-     * @param entry
-     *     The entry
-     */
+    @JsonProperty("entry")
     public void setEntry(List<Entry> entry) {
         this.entry = entry;
     }

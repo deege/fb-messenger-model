@@ -23,179 +23,133 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class FlightInfo {
 
+    @JsonProperty("connection_id")
     @SerializedName("connection_id")
     @Expose
     private String connectionId;
+    
+    @JsonProperty("segment_id")
     @SerializedName("segment_id")
     @Expose
     private String segmentId;
+    
+    @JsonProperty("flight_number")
     @SerializedName("flight_number")
     @Expose
     private String flightNumber;
+    
+    @JsonProperty("aircraft_type")
     @SerializedName("aircraft_type")
     @Expose
     private String aircraftType;
+    
+    @JsonProperty("departure_airport")
     @SerializedName("departure_airport")
     @Expose
     private DepartureAirport departureAirport;
+    
+    @JsonProperty("arrival_airport")
     @SerializedName("arrival_airport")
     @Expose
     private ArrivalAirport arrivalAirport;
+    
+    @JsonProperty("flight_schedule")
     @SerializedName("flight_schedule")
     @Expose
     private FlightSchedule flightSchedule;
+    
+    @JsonProperty("travel_class")
     @SerializedName("travel_class")
     @Expose
     private String travelClass;
 
-    /**
-     * 
-     * @return
-     *     The connectionId
-     */
+    @JsonProperty("connection_id")
     public String getConnectionId() {
         return connectionId;
     }
 
-    /**
-     * 
-     * @param connectionId
-     *     The connection_id
-     */
+    @JsonProperty("connection_id")
     public void setConnectionId(String connectionId) {
         this.connectionId = connectionId;
     }
 
-    /**
-     * 
-     * @return
-     *     The segmentId
-     */
+    @JsonProperty("segment_id")
     public String getSegmentId() {
         return segmentId;
     }
 
-    /**
-     * 
-     * @param segmentId
-     *     The segment_id
-     */
+    @JsonProperty("segment_id")
     public void setSegmentId(String segmentId) {
         this.segmentId = segmentId;
     }
 
-    /**
-     * 
-     * @return
-     *     The flightNumber
-     */
+    @JsonProperty("flight_number")
     public String getFlightNumber() {
         return flightNumber;
     }
 
-    /**
-     * 
-     * @param flightNumber
-     *     The flight_number
-     */
+    @JsonProperty("flight_number")
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
     }
 
-    /**
-     * 
-     * @return
-     *     The aircraftType
-     */
+    @JsonProperty("aircraft_type")
     public String getAircraftType() {
         return aircraftType;
     }
 
-    /**
-     * 
-     * @param aircraftType
-     *     The aircraft_type
-     */
+    @JsonProperty("aircraft_type")
     public void setAircraftType(String aircraftType) {
         this.aircraftType = aircraftType;
     }
 
-    /**
-     * 
-     * @return
-     *     The departureAirport
-     */
+    @JsonProperty("departure_airport")
     public DepartureAirport getDepartureAirport() {
         return departureAirport;
     }
 
-    /**
-     * 
-     * @param departureAirport
-     *     The departure_airport
-     */
+    @JsonProperty("departure_airport")
     public void setDepartureAirport(DepartureAirport departureAirport) {
         this.departureAirport = departureAirport;
     }
 
-    /**
-     * 
-     * @return
-     *     The arrivalAirport
-     */
+    @JsonProperty("arrival_airport")
     public ArrivalAirport getArrivalAirport() {
         return arrivalAirport;
     }
 
-    /**
-     * 
-     * @param arrivalAirport
-     *     The arrival_airport
-     */
+    @JsonProperty("arrival_airport")
     public void setArrivalAirport(ArrivalAirport arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
     }
 
-    /**
-     * 
-     * @return
-     *     The flightSchedule
-     */
+    @JsonProperty("flight_schedule")
     public FlightSchedule getFlightSchedule() {
         return flightSchedule;
     }
 
-    /**
-     * 
-     * @param flightSchedule
-     *     The flight_schedule
-     */
+    @JsonProperty("flight_schedule")
     public void setFlightSchedule(FlightSchedule flightSchedule) {
         this.flightSchedule = flightSchedule;
     }
 
-    /**
-     * 
-     * @return
-     *     The travelClass
-     */
+    @JsonProperty("travel_class")
     public String getTravelClass() {
         return travelClass;
     }
 
-    /**
-     * 
-     * @param travelClass
-     *     The travel_class
-     */
+    @JsonProperty("travel_class")
     public void setTravelClass(String travelClass) {
         this.travelClass = travelClass;
     }

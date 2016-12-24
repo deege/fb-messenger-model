@@ -23,61 +23,72 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class QuickReply {
+    @JsonProperty("content_type")
     @SerializedName("content_type")
     @Expose
     private String contentType;
     
+    @JsonProperty("title")
     @SerializedName("title")
     @Expose
     private String title;
     
+    @JsonProperty("payload")
     @SerializedName("payload")
     @Expose
     private String payload;
     
+    @JsonProperty("image_url")
     @SerializedName("image_url")
     @Expose
     private String imageUrl;
 
+    @JsonProperty("content_type")
     public String getContentType() {
         return contentType;
     }
 
+    @JsonProperty("content_type")
     public void setContentType(String contentType) {
         this.contentType = contentType;
     }
 
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
+    @JsonProperty("title")
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @JsonProperty("payload")
     public String getPayload() {
         return payload;
     }
 
+    @JsonProperty("payload")
     public void setPayload(String payload) {
         this.payload = payload;
     }
 
+    @JsonProperty("image_url")
     public String getImageUrl() {
         return imageUrl;
     }
 
+    @JsonProperty("image_url")
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }

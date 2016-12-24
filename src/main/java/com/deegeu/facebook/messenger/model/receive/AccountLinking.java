@@ -23,24 +23,45 @@
  */
 package com.deegeu.facebook.messenger.model.receive;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class AccountLinking {
+    @JsonProperty("status")
     @SerializedName("status")
     @Expose
     private String status;
     
+    @JsonProperty("authorization_code")
     @SerializedName("authorization_code")
     @Expose
     private Payload authorizationCode;
+
+    @JsonProperty("status")
+    public String getStatus() {
+        return status;
+    }
+
+    @JsonProperty("status")
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @JsonProperty("authorization_code")
+    public Payload getAuthorizationCode() {
+        return authorizationCode;
+    }
+
+    @JsonProperty("authorization_code")
+    public void setAuthorizationCode(Payload authorizationCode) {
+        this.authorizationCode = authorizationCode;
+    }
     
     @Override
     public String toString() {

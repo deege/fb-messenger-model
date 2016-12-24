@@ -23,37 +23,43 @@
  */
 package com.deegeu.facebook.messenger.model.send;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- *
- * @author dspiess
- */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 final public class PriceList {
 
+    @JsonProperty("label")
     @SerializedName("label")
     @Expose
     private String label;
+    
+    @JsonProperty("amount")
     @SerializedName("amount")
     @Expose
     private String amount;
 
+    @JsonProperty("label")
     public String getLabel() {
         return label;
     }
 
+    @JsonProperty("label")
     public void setLabel(String label) {
         this.label = label;
     }
 
+    @JsonProperty("amount")
     public String getAmount() {
         return amount;
     }
 
+    @JsonProperty("amount")
     public void setAmount(String amount) {
         this.amount = amount;
     }
