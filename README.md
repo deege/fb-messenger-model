@@ -38,7 +38,8 @@ Here's an example for sending a simple message using JAX-RS and GSON.
     String json = gson.toJson(builder.build());
     javax.ws.rs.core.Response response
             = invocationBuilder.post(Entity.entity(json, MediaType.APPLICATION_JSON));
-}'''
+}
+'''
 
 ## Contributions
 
