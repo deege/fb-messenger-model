@@ -8,8 +8,8 @@ These POJOs can be serialized or deserialized using [GSON](https://github.com/go
 
 The mvn POM file requires two parameters passed.
 
-'''mvn clean install -Dproject.version=1.0.0 -Dbuild.number=$BUILD_NUMBER
-'''
+```mvn clean install -Dproject.version=1.0.0 -Dbuild.number=$BUILD_NUMBER
+```
 
 ## Getting started
 
@@ -19,7 +19,8 @@ All objects are created using builders. The builders perform some validation, to
 
 Here's an example for sending a simple message using JAX-RS and GSON.
 
-'''private void sendMessage(Long recipientId, String textMessage) {
+```java
+private void sendMessage(Long recipientId, String textMessage) {
     // Get client and target for message
     Client client = ClientBuilder.newClient();
     WebTarget target = client.target(FACEBOOK_URI)
@@ -39,7 +40,7 @@ Here's an example for sending a simple message using JAX-RS and GSON.
     javax.ws.rs.core.Response response
             = invocationBuilder.post(Entity.entity(json, MediaType.APPLICATION_JSON));
 }
-'''
+```
 
 ## Contributions
 
